@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<grammar>
+    <rule name="program">
+        <values>
+            <v type="nonterminal">declaration list</v>
+            <v type="terminal">{</v>
+            <v type="nonterminal">operator list 2</v>
+            <v type="terminal">}</v>
+        </values>
+    </rule>
+    <rule name="declaration list">
+        <values>
+            <v type="nonterminal">declaration</v>
+        </values>
+        <values>
+            <v type="nonterminal">declaration list</v>
+            <v type="nonterminal">declaration</v>
+        </values>
+    </rule>
+    <rule name="declaration">
+        <values>
+            <v type="nonterminal">type</v>
+            <v type="nonterminal">variable list</v>
+        </values>
+    </rule>
+    <rule name="type">
+        <values>
+            <v type="terminal">int</v>
+        </values>
+        <values>
+            <v type="terminal">float</v>
+        </values>
+    </rule>
+    <rule name="variable list">
+        <values>
+            <v type="terminal">identifier</v>
+            <v type="terminal">;</v>
+        </values>
+        <values>
+            <v type="terminal">identifier</v>
+            <v type="terminal">,</v>
+            <v type="nonterminal">variable list</v>
+        </values>
+    </rule>
+    <rule name="operator block">
+        <values>
+            <v type="terminal">{</v>
+            <v type="nonterminal">operator list 2</v>
+            <v type="terminal">}</v>
+        </values>
+        <values>
+            <v type="nonterminal">operator</v>
+            <v type="terminal">end</v>
+        </values>
+    </rule>
+    <rule name="operator list 2">
+        <values>
+            <v type="nonterminal">operator list</v>
+        </values>
+    </rule>
+    <rule name="operator list">
+        <values>
+            <v type="nonterminal">operator list</v>
+            <v type="nonterminal">operator</v>
+            <v type="terminal">;</v>
+        </values>
+        <values>
+            <v type="nonterminal">operator</v>
+            <v type="terminal">;</v>
+        </values>
+    </rule>
+    <rule name="operator">
+        <values>
+            <v type="nonterminal">input</v>
+        </values>
+        <values>
+            <v type="nonterminal">output</v>
+        </values>
+        <values>
+            <v type="nonterminal">assignment</v>
+        </values>
+        <values>
+            <v type="nonterminal">loop</v>
+        </values>
+        <values>
+            <v type="nonterminal">conditional</v>
+        </values>
+        <values>
+            <v type="nonterminal">label call</v>
+        </values>
+        <values>
+            <v type="terminal">label</v>
+        </values>
+    </rule>
+    <rule name="label call">
+        <values>
+            <v type="terminal">goto</v>
+            <v type="terminal">label</v>
+        </values>
+    </rule>
+    <rule name="input">
+        <values>
+            <v type="terminal">cin</v>
+            <v type="terminal">&gt;&gt;</v>
+            <v type="terminal">identifier</v>
+        </values>
+        <values>
+            <v type="nonterminal">input</v>
+            <v type="terminal">&gt;&gt;</v>
+            <v type="terminal">identifier</v>
+        </values>
+    </rule>
+    <rule name="output">
+        <values>
+            <v type="terminal">cout</v>
+            <v type="terminal">&lt;&lt;</v>
+            <v type="terminal">identifier</v>
+        </values>
+        <values>
+            <v type="nonterminal">output</v>
+            <v type="terminal">&lt;&lt;</v>
+            <v type="terminal">identifier</v>
+        </values>
+        <values>
+            <v type="terminal">cout</v>
+            <v type="terminal">&lt;&lt;</v>
+            <v type="terminal">constant</v>
+        </values>
+        <values>
+            <v type="nonterminal">output</v>
+            <v type="terminal">&lt;&lt;</v>
+            <v type="terminal">constant</v>
+        </values>
+    </rule>
+    <rule name="assignment">
+        <values>
+            <v type="terminal">identifier</v>
+            <v type="terminal">=</v>
+            <v type="nonterminal">E3</v>
+        </values>
+    </rule>
+    <rule name="loop">
+        <values>
+            <v type="terminal">for</v>
+            <v type="terminal">(</v>
+            <v type="terminal">identifier</v>
+            <v type="terminal">=</v>
+            <v type="nonterminal">E3</v>
+            <v type="terminal">;</v>
+            <v type="nonterminal">LE 2</v>
+            <v type="terminal">;</v>
+            <v type="nonterminal">E2</v>
+            <v type="terminal">)</v>
+            <v type="nonterminal">operator block</v>
+        </values>
+    </rule>
+    <rule name="conditional">
+        <values>
+            <v type="terminal">if</v>
+            <v type="terminal">(</v>
+            <v type="nonterminal">LE 2</v>
+            <v type="terminal">)</v>
+            <v type="nonterminal">operator block</v>
+        </values>
+    </rule>
+    <rule name="LE 2">
+        <values>
+            <v type="nonterminal">LE</v>
+        </values>
+    </rule>
+    <rule name="LE">
+        <values>
+            <v type="nonterminal">LE</v>
+            <v type="terminal">or</v>
+            <v type="nonterminal">LT</v>
+        </values>
+        <values>
+            <v type="nonterminal">LT</v>
+        </values>
+    </rule>
+    <rule name="LT">
+        <values>
+            <v type="nonterminal">LF 2</v>
+            <v type="terminal">and</v>
+            <v type="nonterminal">LT</v>
+        </values>
+        <values>
+            <v type="nonterminal">LF 2</v>
+        </values>
+    </rule>
+    <rule name="LF 2">
+        <values>
+            <v type="nonterminal">LF</v>
+        </values>
+    </rule>
+    <rule name="LF">
+        <values>
+            <v type="nonterminal">R</v>
+        </values>
+        <values>
+            <v type="terminal">(</v>
+            <v type="nonterminal">LE 2</v>
+            <v type="terminal">)</v>
+        </values>
+        <values>
+            <v type="terminal">not</v>
+            <v type="nonterminal">LF</v>
+        </values>
+    </rule>
+    <rule name="R">
+        <values>
+            <v type="nonterminal">E</v>
+            <v type="nonterminal">LS</v>
+            <v type="nonterminal">E2</v>
+        </values>
+    </rule>
+    <rule name="LS">
+        <values>
+            <v type="terminal">&lt;</v>
+        </values>
+        <values>
+            <v type="terminal">&gt;</v>
+        </values>
+        <values>
+            <v type="terminal">&lt;=</v>
+        </values>
+        <values>
+            <v type="terminal">&gt;=</v>
+        </values>
+        <values>
+            <v type="terminal">==</v>
+        </values>
+        <values>
+            <v type="terminal">!=</v>
+        </values>
+    </rule>
+    <rule name="E3">
+        <values>
+            <v type="nonterminal">E2</v>
+        </values>
+    </rule>
+    <rule name="E2">
+        <values>
+            <v type="nonterminal">E</v>
+        </values>
+    </rule>
+    <rule name="E">
+        <values>
+            <v type="nonterminal">T2</v>
+        </values>
+        <values>
+            <v type="nonterminal">E</v>
+            <v type="terminal">+</v>
+            <v type="nonterminal">T2</v>
+        </values>
+        <values>
+            <v type="nonterminal">E</v>
+            <v type="terminal">-</v>
+            <v type="nonterminal">T2</v>
+        </values>
+    </rule>
+    <rule name="T2">
+        <values>
+            <v type="nonterminal">T</v>
+        </values>
+    </rule>
+    <rule name="T">
+        <values>
+            <v type="nonterminal">V</v>
+        </values>
+        <values>
+            <v type="nonterminal">T</v>
+            <v type="terminal">*</v>
+            <v type="nonterminal">V</v>
+        </values>
+        <values>
+            <v type="nonterminal">T</v>
+            <v type="terminal">/</v>
+            <v type="nonterminal">V</v>
+        </values>
+    </rule>
+    <rule name="V">
+        <values>
+            <v type="terminal">identifier</v>
+        </values>
+        <values>
+            <v type="terminal">constant</v>
+        </values>
+        <values>
+            <v type="terminal">(</v>
+            <v type="nonterminal">E3</v>
+            <v type="terminal">)</v>
+        </values>
+    </rule>
+</grammar>

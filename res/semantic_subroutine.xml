@@ -1,0 +1,40 @@
+<grammar>
+    <rule name="+">
+        <values>
+            <v type="nonterminal">E</v>
+            <v type="terminal">+</v>
+            <v type="nonterminal">T2</v>
+        </values>
+    </rule>
+    <rule name="-">
+        <values>
+            <v type="nonterminal">E</v>
+            <v type="terminal">-</v>
+            <v type="nonterminal">T2</v>
+        </values>
+    </rule>
+    <rule name="*">
+        <values>
+            <v type="nonterminal">T</v>
+            <v type="terminal">*</v>
+            <v type="nonterminal">V</v>
+        </values>
+    </rule>
+    <rule name="/">
+        <values>
+            <v type="nonterminal">T</v>
+            <v type="terminal">/</v>
+            <v type="nonterminal">V</v>
+        </values>
+    </rule>
+    <rule name="identifier">
+        <values>
+            <v type="terminal">identifier</v>
+        </values>
+    </rule>
+    <rule name="constant">
+        <values>
+            <v type="terminal">constant</v>
+        </values>
+    </rule>
+</grammar>
