@@ -16,7 +16,6 @@ import kpi.skarlet.cad.lexer.lexemes.Identifier;
 import kpi.skarlet.cad.lexer.lexemes.Label;
 import kpi.skarlet.cad.lexer.lexemes.Lexeme;
 import kpi.skarlet.cad.poliz.PolizCalculator;
-import kpi.skarlet.cad.poliz.SSReader;
 import kpi.skarlet.cad.poliz.entity.PolizTableElem;
 import org.apache.commons.io.FileUtils;
 
@@ -26,7 +25,6 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
 
 public class Controller {
 
@@ -34,7 +32,6 @@ public class Controller {
     private ObservableList<TranslatorException> errors;
     private boolean lexerPass;
     private boolean synzerPass;
-    private SSReader ssReader;
     private FTCreator creator;
     private FTAnalyser analyser;
 
@@ -184,9 +181,7 @@ public class Controller {
     private void initFields() {
         lexer = new LexicalAnalyser();
         creator = new FTCreator();
-        ssReader = new SSReader();
-        analyser = new FTAnalyser(lexer, creator, ssReader);
-        ssReader = new SSReader();
+        analyser = new FTAnalyser(lexer, creator);
     }
 
     private void initLexerTables() {
@@ -265,8 +260,7 @@ public class Controller {
     }
 
     public void onPolizGrammarShowClick() {
-        File file = new File(SSReader.PATH_RESULT_GRAMMAR);
-        textArea.setText(readFile(file, Charset.defaultCharset()));
+        JOptionPane.showMessageDialog(null, "This is deprecated feature and will be delete soon");
     }
 
     public void onParseTableShowClick() {

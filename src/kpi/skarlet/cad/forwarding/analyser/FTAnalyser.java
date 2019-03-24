@@ -13,7 +13,6 @@ import kpi.skarlet.cad.lexer.exceptions.lexical.UnknownSymbolException;
 import kpi.skarlet.cad.lexer.lexemes.Lexeme;
 import kpi.skarlet.cad.poliz.entity.PolizWord;
 import kpi.skarlet.cad.poliz.constants.PolizWordType;
-import kpi.skarlet.cad.poliz.SSReader;
 
 import javax.swing.*;
 import java.util.*;
@@ -22,10 +21,8 @@ import java.util.stream.Collectors;
 public class FTAnalyser {
     private List<Lexeme> lexemes;
     private FTCreator creator;
-    private SSReader ssReader;
     private TableStructure table;
     private Map<List<Word>, Word> reversedRules;
-    private Map<List<Word>, Word> reversedPolizRules;
     private List<Word> basis;
     private List<Word> poliz;
     private Lexeme lastStackLexeme;
@@ -42,17 +39,14 @@ public class FTAnalyser {
 
         this.creator = new FTCreator();
         this.reversedRules = createReverseRulesMap();
-        this.reversedPolizRules = createReversePolizRulesMap();
         this.table = new TableStructure(new ArrayList<>(), new ArrayList<>());
     }
 
-    public FTAnalyser(LexicalAnalyser lexer, FTCreator creator, SSReader ssReader) {
+    public FTAnalyser(LexicalAnalyser lexer, FTCreator creator) {
         this.lexemes = lexer.getLexemes();
         this.creator = creator;
-        this.ssReader = ssReader;
         this.reversedRules = createReverseRulesMap();
         this.table = new TableStructure(new ArrayList<>(), new ArrayList<>());
-        this.reversedPolizRules = createReversePolizRulesMap();
         this.poliz = new ArrayList<>();
     }
 
@@ -147,25 +141,9 @@ public class FTAnalyser {
         return reversedRules.get(words);
     }
 
-    private Word findPolizRule(List<Word> words) {
-//        return reversedRules.get(findRightSide(words));
-        return reversedPolizRules.get(words);
-    }
-
     private Map<List<Word>, Word> createReverseRulesMap() {
         Map<List<Word>, Word> reverseMap = new HashMap<>();
         for (Rule rule : creator.getRules()) {
-            List<List<Word>> collect = rule.getRightSides().stream().map(RightSide::getWords).collect(Collectors.toList());
-            for (List<Word> wordList : collect) {
-                reverseMap.put(wordList, new Word(rule.getName(), WordType.NONTERMINAL));
-            }
-        }
-        return reverseMap;
-    }
-
-    private Map<List<Word>, Word> createReversePolizRulesMap() {
-        Map<List<Word>, Word> reverseMap = new HashMap<>();
-        for (Rule rule : ssReader.getRules()) {
             List<List<Word>> collect = rule.getRightSides().stream().map(RightSide::getWords).collect(Collectors.toList());
             for (List<Word> wordList : collect) {
                 reverseMap.put(wordList, new Word(rule.getName(), WordType.NONTERMINAL));
@@ -181,22 +159,6 @@ public class FTAnalyser {
         basis = new ArrayList<>();
         basis.addAll(wordsForReplace);
         Word replaced = findRule(wordsForReplace);
-
-        Word polizReplaced = findPolizRule(wordsForReplace);
-        if (polizReplaced != null) {
-            polizReplaced.setType(WordType.TERMINAL);
-            switch (polizReplaced.getName()) {
-                case "identifier":
-                    poliz.add(new PolizWord(lastStackLexeme.getName(), PolizWordType.IDENTIFIER));
-                    break;
-                case "constant":
-                    poliz.add(new PolizWord(lastStackLexeme.getName(), PolizWordType.CONSTANT));
-                    break;
-                default:
-                    poliz.add(new PolizWord(polizReplaced.getName(), PolizWordType.OPERATOR));
-                    break;
-            }
-        }
 
         if (replaced == null) {
             System.err.println("replaceByRule => rule not found!");

@@ -1,5 +1,0 @@
- <+> ::= <E> + <T2>
- <-> ::= <E> - <T2>
- <*> ::= <T> * <V>
- </> ::= <T> / <V>
- <stack> ::= identifier | constant
