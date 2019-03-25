@@ -32,7 +32,7 @@ public interface TerminalSymbols {
     String CLOSING_BRACE = "}";
     String SEMICOLON = ";";
     String UNDERLINE = "_";
-    String EXCLAMINATION = "!";
+    String EXCLAMATION = "!";
     String OPENING_SQUARE_BRACE = "[";
     String CLOSING_SQUARE_BRACE = "]";
     String END = "end";

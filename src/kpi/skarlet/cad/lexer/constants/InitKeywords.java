@@ -40,7 +40,7 @@ public class InitKeywords extends HashMap<String, Integer> {
         put(TS.CLOSING_BRACE, 32);
         put(TS.SEMICOLON, 33);
         put(TS.UNDERLINE, 34);
-        put(TS.EXCLAMINATION, 35);
+        put(TS.EXCLAMATION, 35);
         put(TS.OPENING_SQUARE_BRACE, 36);
         put(TS.CLOSING_SQUARE_BRACE, 37);
         put(TS.END, 38);

@@ -11,12 +11,14 @@ import kpi.skarlet.cad.forwarding.grammar.Word;
 import kpi.skarlet.cad.lexer.LexicalAnalyser;
 import kpi.skarlet.cad.lexer.exceptions.lexical.UnknownSymbolException;
 import kpi.skarlet.cad.lexer.lexemes.Lexeme;
+import kpi.skarlet.cad.poliz.ArithmeticExpressionParser;
 
 import javax.swing.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class FTAnalyser {
+    private ArithmeticExpressionParser pBuilder;
     private List<Lexeme> lexemes;
     private FTCreator creator;
     private TableStructure table;
@@ -34,6 +36,7 @@ public class FTAnalyser {
         LexicalAnalyser lexer = new LexicalAnalyser();
         lexer.run();
         lexemes = lexer.getLexemes();
+        this.pBuilder = new ArithmeticExpressionParser(lexer);
 
         this.creator = new FTCreator();
         this.reversedRules = createReverseRulesMap();
@@ -42,6 +45,7 @@ public class FTAnalyser {
 
     public FTAnalyser(LexicalAnalyser lexer, FTCreator creator) {
         this.lexemes = lexer.getLexemes();
+        this.pBuilder = new ArithmeticExpressionParser(lexer);
         this.creator = creator;
         this.reversedRules = createReverseRulesMap();
         this.table = new TableStructure(new ArrayList<>(), new ArrayList<>());
@@ -91,7 +95,9 @@ public class FTAnalyser {
         basis = null;
         if (ratio.isLess() || ratio.isEqual()) {
             lastStackLexeme = table.getInputFirst();
+            pBuilder.add(table.getInputFirst());
             table.moveWordFromInputToStack();
+            poliz = pBuilder.getStackCopyAsWords();
         } else if (ratio.isMore()) {
             replaceByRule(findLastLessSign());
         } else {
@@ -172,7 +178,7 @@ public class FTAnalyser {
 //        creator.clear();
         try {
             table.clear();
-        } catch (ConcurrentModificationException e){
+        } catch (ConcurrentModificationException e) {
             // ignore
             e.printStackTrace();
         }

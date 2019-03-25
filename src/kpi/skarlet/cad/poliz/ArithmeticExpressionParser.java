@@ -1,5 +1,7 @@
 package kpi.skarlet.cad.poliz;
 
+import kpi.skarlet.cad.forwarding.constants.WordType;
+import kpi.skarlet.cad.forwarding.grammar.Word;
 import kpi.skarlet.cad.lexer.LexicalAnalyser;
 import kpi.skarlet.cad.lexer.constants.InitKeywords;
 import kpi.skarlet.cad.lexer.constants.TerminalSymbols;
@@ -8,11 +10,11 @@ import kpi.skarlet.cad.lexer.lexemes.Lexeme;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+import java.util.stream.Collectors;
 
 public class ArithmeticExpressionParser implements PParser {
     //    private final String PATH = "res/program.txt";
     private TerminalSymbols TS;
-    private InitKeywords IK;
     private LexicalAnalyser lexer;
     private List<Lexeme> parsed;
     private Stack<Lexeme> stack;
@@ -41,14 +43,40 @@ public class ArithmeticExpressionParser implements PParser {
         this.outputChanged = false;
         for (int i = 0; i < expression.size(); i++) {
             Lexeme lexeme = expression.get(i);
+            int lexCode = lexeme.getCode();
             int lexPriority = getPriority(lexeme);
-            if (lexeme.getCode() == getCode(TS.IDENTIFIER) || lexeme.getCode() == getCode(TS.CONSTANT)) {
+
+            if (lexCode == getCode(TS.IDENTIFIER) || lexCode == getCode(TS.CONSTANT)) {
                 parsed.add(lexeme);
                 outputChanged = true;
             } else if (lexPriority == 99) {
                 // it's a keyword
+                if (lexCode == getCode(TS.TYPE_INT) || lexCode == getCode(TS.TYPE_FLOAT)) {
+
+                } else if (lexCode == getCode(TS.LABEL_START)) {
+
+                } else if (lexCode == getCode(TS.LABEL)) {
+
+                } else if (lexCode == getCode(TS.INPUT_OPERATOR)) {
+
+                } else if (lexCode == getCode(TS.INPUT_JOINT)) {
+
+                } else if (lexCode == getCode(TS.OUTPUT_OPERATOR)) {
+
+                } else if (lexCode == getCode(TS.OUTPUT_JOINT)) {
+
+                } else if (lexCode == getCode(TS.CYCLE_FOR)) {
+
+                } else if (lexCode == getCode(TS.CONDITIONAL_OPERATOR)) {
+
+                } else if (lexCode == getCode(TS.SEMICOLON)) {
+
+                } else {
+                    // default scenario
+                    // COMMA, COLON, UNDERLINE, EXCLAMATION, END
+                }
             } else if (!stack.empty() && getPriority(stack.peek()) >= lexPriority
-                    && isOpeningBracket(lexeme)) {
+                    && !isOpeningBracket(lexeme)) {
                 parsed.add(stack.pop());
                 outputChanged = true;
                 i--;
@@ -58,8 +86,8 @@ public class ArithmeticExpressionParser implements PParser {
                         System.err.println("ArithmeticExpressionParser >> Stack is empty!!!");
                     }
 
-                    if (stack.peek().getCode() == lexeme.getCode() - 1)     // the same type of bracket
-                        stack.pop();    // stack.peek() == '('
+                    if (stack.peek().getCode() == lexCode - 1)     // the same type of bracket
+                        stack.pop();
                     continue;
                 }
                 stack.push(lexeme);
@@ -85,11 +113,15 @@ public class ArithmeticExpressionParser implements PParser {
     }
 
     private boolean isOpeningBracket(Lexeme lexeme) {
-        return lexeme.getCode() != getCode(TS.OPENING_BRACKET);
+        return lexeme.getCode() == getCode(TS.OPENING_BRACKET)
+                || lexeme.getCode() == getCode(TS.OPENING_SQUARE_BRACE)
+                || lexeme.getCode() == getCode(TS.OPENING_BRACE);
     }
 
     private boolean isClosingBracket(Lexeme lexeme) {
-        return lexeme.getCode() == getCode(TS.CLOSING_BRACKET);
+        return lexeme.getCode() == getCode(TS.CLOSING_BRACKET)
+                || lexeme.getCode() == getCode(TS.CLOSING_SQUARE_BRACE)
+                || lexeme.getCode() == getCode(TS.CLOSING_BRACE);
     }
 
     private Integer getCode(String string) {
@@ -133,6 +165,11 @@ public class ArithmeticExpressionParser implements PParser {
             default:
                 return 99;
         }
+    }
+
+    public List<Word> getStackCopyAsWords() {
+        List<Word> collect = parsed.stream().map(l -> new Word(l.getName(), WordType.TERMINAL)).collect(Collectors.toCollection(ArrayList::new));
+        return collect;
     }
 
     public LexicalAnalyser getLexer() {
