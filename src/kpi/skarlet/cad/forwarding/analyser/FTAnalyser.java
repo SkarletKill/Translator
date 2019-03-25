@@ -11,8 +11,6 @@ import kpi.skarlet.cad.forwarding.grammar.Word;
 import kpi.skarlet.cad.lexer.LexicalAnalyser;
 import kpi.skarlet.cad.lexer.exceptions.lexical.UnknownSymbolException;
 import kpi.skarlet.cad.lexer.lexemes.Lexeme;
-import kpi.skarlet.cad.poliz.entity.PolizWord;
-import kpi.skarlet.cad.poliz.constants.PolizWordType;
 
 import javax.swing.*;
 import java.util.*;

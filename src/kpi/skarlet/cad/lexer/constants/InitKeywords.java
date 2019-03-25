@@ -9,8 +9,8 @@ public class InitKeywords extends HashMap<String, Integer> {
         put(TS.TYPE_INT, 1);
         put(TS.TYPE_FLOAT, 2);
         put(TS.CYCLE_FOR, 3);
-        put("to", 4);
-        put("step", 5);
+//        put("to", 4);
+//        put("step", 5);
         put(TS.LABEL_START, 6);
         put(TS.CONDITIONAL_OPERATOR, 7);
         put(TS.INPUT_OPERATOR, 8);
@@ -28,7 +28,7 @@ public class InitKeywords extends HashMap<String, Integer> {
         put(TS.LESS, 20);
         put(TS.MORE_OR_EQUAL, 21);
         put(TS.LESS_OR_EQUAL, 22);
-        put("^", 23);
+//        put("^", 23);
         put(TS.ASTERISK, 24);
         put(TS.SLASH, 25);
         put(TS.PLUS, 26);

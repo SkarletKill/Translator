@@ -1,6 +1,7 @@
 package kpi.skarlet.cad.poliz;
 
 import kpi.skarlet.cad.lexer.LexicalAnalyser;
+import kpi.skarlet.cad.lexer.constants.InitKeywords;
 import kpi.skarlet.cad.lexer.constants.TerminalSymbols;
 import kpi.skarlet.cad.lexer.lexemes.Lexeme;
 
@@ -11,9 +12,11 @@ import java.util.Stack;
 public class ArithmeticExpressionParser implements PParser {
     //    private final String PATH = "res/program.txt";
     private TerminalSymbols TS;
+    private InitKeywords IK;
     private LexicalAnalyser lexer;
     private List<Lexeme> parsed;
     private Stack<Lexeme> stack;
+    private boolean outputChanged = false;
 
     public ArithmeticExpressionParser(LexicalAnalyser lexer) {
         this.lexer = lexer;
@@ -22,36 +25,71 @@ public class ArithmeticExpressionParser implements PParser {
     }
 
     public static void main(String[] args) {
-        LexicalAnalyser lexer = new LexicalAnalyser("int a, b, c, d, e, f! a = a + b * c ^ (d / e) / f");
+//        LexicalAnalyser lexer = new LexicalAnalyser("int a, b, c, d, e, f! a = a + b * c - (d / e) / f * e");
+        LexicalAnalyser lexer = new LexicalAnalyser("int a, b, c, d, e, f! a = 1 + 2 * 3 - (4 / 5) / 6 * 7");
         ArithmeticExpressionParser parser = new ArithmeticExpressionParser(lexer);
         parser.getLexer().run();
-        parser.parse(lexer.getLexemes().subList(15, lexer.getLexemes().size()));
+        parser.parse(lexer.getLexemes().subList(15, lexer.getLexemes().size() - 2));
+        System.out.println(parser.parsed);
+        parser.add(lexer.getLexemes().get(lexer.getLexemes().size() - 2));
+        parser.add(lexer.getLexemes().get(lexer.getLexemes().size() - 1));
+        parser.releaseRecollection();
         System.out.println(parser.parsed);
     }
 
     public void parse(List<Lexeme> expression) {
+        this.outputChanged = false;
         for (int i = 0; i < expression.size(); i++) {
             Lexeme lexeme = expression.get(i);
+            int lexPriority = getPriority(lexeme);
             if (lexeme.getCode() == getCode(TS.IDENTIFIER) || lexeme.getCode() == getCode(TS.CONSTANT)) {
                 parsed.add(lexeme);
-            } else if (!stack.empty() && getPriority(stack.peek()) >= getPriority(lexeme)
-                    && !lexeme.getName().equals(TS.OPENING_BRACKET)) {
+                outputChanged = true;
+            } else if (lexPriority == 99) {
+                // it's a keyword
+            } else if (!stack.empty() && getPriority(stack.peek()) >= lexPriority
+                    && isOpeningBracket(lexeme)) {
                 parsed.add(stack.pop());
+                outputChanged = true;
                 i--;
-            } else {
-                if (lexeme.getName().equals(TS.CLOSING_BRACKET)) {
-                    stack.pop();    // stack.peek() == '('
+            } else {    // lexPriority != 99 && (stack is empty || stack priority less || lexeme is opening bracket)
+                if (isClosingBracket(lexeme)) {
+                    if (stack.empty()) {
+                        System.err.println("ArithmeticExpressionParser >> Stack is empty!!!");
+                    }
+
+                    if (stack.peek().getCode() == lexeme.getCode() - 1)     // the same type of bracket
+                        stack.pop();    // stack.peek() == '('
                     continue;
                 }
                 stack.push(lexeme);
             }
         }
 
+//        releaseRecollection();
+    }
+
+    private void releaseRecollection() {
         while (!stack.empty()) {
             Lexeme lexeme = stack.pop();
             if (lexeme.getName().equals(TS.OPENING_BRACKET)) continue;
             parsed.add(lexeme);
         }
+    }
+
+    public boolean add(Lexeme lexeme) {
+        List<Lexeme> lexList = new ArrayList<>();
+        lexList.add(lexeme);
+        parse(lexList);
+        return this.outputChanged;
+    }
+
+    private boolean isOpeningBracket(Lexeme lexeme) {
+        return lexeme.getCode() != getCode(TS.OPENING_BRACKET);
+    }
+
+    private boolean isClosingBracket(Lexeme lexeme) {
+        return lexeme.getCode() == getCode(TS.CLOSING_BRACKET);
     }
 
     private Integer getCode(String string) {
@@ -61,17 +99,37 @@ public class ArithmeticExpressionParser implements PParser {
     private int getPriority(Lexeme lexeme) {
         switch (lexeme.getCode()) {
             case 28:    // (
+            case 31:    // {
+            case 36:    // [
                 return 0;
+            case 29:    // )
+            case 32:    // }
+            case 37:    // ]
+                return 1;
+            case 14:    // =
+                return 2;
+            case 12:    // or
+                return 3;
+            case 11:    // and
+                return 4;
+            case 10:    // not
+                return 5;
+            case 17:    // ==
+            case 18:    // !=
+            case 19:    // >
+            case 20:    // <
+            case 21:    // >=
+            case 22:    // <=
+                return 6;
             case 26:    // +
             case 27:    // -
-            case 29:    // )
-                return 1;
+                return 7;
             case 24:    // *
             case 25:    // /
 //            case ??:    // @
-                return 2;
-            case 23:
-                return 3;
+                return 8;
+            case 23:    // unnecessary
+                return 9;
             default:
                 return 99;
         }
