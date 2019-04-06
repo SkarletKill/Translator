@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="extend ArithmeticExpressionParser">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="included ArithmeticExpressionParser into Syntax Analyser">
+      <change afterPath="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/entity/ForData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Translator/kpi/skarlet/cad/forwarding/analyser/FTAnalyser$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Translator/kpi/skarlet/cad/forwarding/analyser/FTAnalyser$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Translator/kpi/skarlet/cad/forwarding/analyser/FTAnalyser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Translator/kpi/skarlet/cad/forwarding/analyser/FTAnalyser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Translator/kpi/skarlet/cad/lexer/constants/InitKeywords.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Translator/kpi/skarlet/cad/lexer/constants/InitKeywords.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Translator/kpi/skarlet/cad/lexer/constants/TerminalSymbols.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Translator/kpi/skarlet/cad/lexer/constants/TerminalSymbols.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Translator/kpi/skarlet/cad/poliz/ArithmeticExpressionParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Translator/kpi/skarlet/cad/poliz/ArithmeticExpressionParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Translator/kpi/skarlet/cad/poliz/PParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Translator/kpi/skarlet/cad/poliz/PParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/analyser/FTAnalyser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/analyser/FTAnalyser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/constants/InitKeywords.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/constants/InitKeywords.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/constants/TerminalSymbols.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/constants/TerminalSymbols.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kpi/skarlet/cad/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kpi/skarlet/cad/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kpi/skarlet/cad/lexer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/kpi/skarlet/cad/lexer.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/ArithmeticExpressionParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/ArithmeticExpressionParser.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -75,57 +72,63 @@
     <session id="523153714">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="16" />
+          <entry key="project.closed" value="27" />
           <entry key="project.open.time.110" value="1" />
           <entry key="project.open.time.17" value="1" />
-          <entry key="project.open.time.18" value="1" />
+          <entry key="project.open.time.18" value="2" />
           <entry key="project.open.time.19" value="2" />
           <entry key="project.open.time.2" value="2" />
-          <entry key="project.open.time.20" value="1" />
-          <entry key="project.open.time.24" value="1" />
+          <entry key="project.open.time.20" value="2" />
+          <entry key="project.open.time.21" value="1" />
+          <entry key="project.open.time.22" value="2" />
+          <entry key="project.open.time.23" value="1" />
+          <entry key="project.open.time.24" value="2" />
+          <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.30" value="1" />
           <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.36" value="1" />
           <entry key="project.open.time.39" value="1" />
-          <entry key="project.open.time.43" value="1" />
+          <entry key="project.open.time.43" value="2" />
+          <entry key="project.open.time.61" value="1" />
           <entry key="project.open.time.68" value="1" />
+          <entry key="project.open.time.76" value="1" />
           <entry key="project.open.time.78" value="1" />
-          <entry key="project.opened" value="17" />
+          <entry key="project.opened" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="fxml" value="60" />
-          <entry key="java" value="6839" />
-          <entry key="txt" value="73" />
+          <entry key="java" value="9203" />
+          <entry key="txt" value="108" />
           <entry key="xml" value="103" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="6839" />
-          <entry key="PLAIN_TEXT" value="73" />
+          <entry key="JAVA" value="9203" />
+          <entry key="PLAIN_TEXT" value="108" />
           <entry key="XML" value="163" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="1" />
-          <entry key="fxml" value="3" />
+          <entry key="fxml" value="4" />
           <entry key="html" value="2" />
-          <entry key="java" value="169" />
-          <entry key="txt" value="15" />
-          <entry key="xml" value="8" />
+          <entry key="java" value="195" />
+          <entry key="txt" value="22" />
+          <entry key="xml" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="1" />
           <entry key="HTML" value="2" />
-          <entry key="JAVA" value="169" />
-          <entry key="PLAIN_TEXT" value="15" />
-          <entry key="XML" value="11" />
+          <entry key="JAVA" value="195" />
+          <entry key="PLAIN_TEXT" value="22" />
+          <entry key="XML" value="14" />
         </counts>
       </usages-collector>
     </session>
@@ -135,62 +138,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/ArithmeticExpressionParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="91" column="17" lean-forward="true" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
-              <folding>
-                <element signature="method#ArithmeticExpressionParser#0;class#ArithmeticExpressionParser#0" />
-                <element signature="method#main#0;class#ArithmeticExpressionParser#0" />
-                <element signature="method#releaseRecollection#0;class#ArithmeticExpressionParser#0" />
-                <element signature="method#add#0;class#ArithmeticExpressionParser#0" />
-                <element signature="method#getPriority#0;class#ArithmeticExpressionParser#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/grammar/Word.java">
+        <entry file="file://$PROJECT_DIR$/res/program.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/constants/InitKeywords.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="59">
-              <caret line="31" column="29" lean-forward="true" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/controller/Controller.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4094">
-              <caret line="299" column="25" selection-start-line="299" selection-start-column="25" selection-end-line="299" selection-end-column="25" />
-              <folding>
-                <element signature="e#3937#4073#0" />
-                <element signature="e#4079#4237#0" />
-                <element signature="e#4243#5578#0" />
-                <element signature="e#5584#6059#0" />
-                <element signature="e#6065#6327#0" />
-                <element signature="e#6333#6791#0" />
-                <element signature="e#6797#7463#0" />
-                <element signature="e#7539#7708#0" />
-                <element signature="e#7714#7858#0" />
-                <element signature="e#7864#8062#0" />
-                <element signature="e#8068#8218#0" />
-                <element signature="e#8224#9177#0" />
-                <element signature="e#9526#10030#0" />
-                <element signature="e#10036#10498#0" />
-                <element signature="e#10504#10813#0" />
-              </folding>
+            <state relative-caret-position="207">
+              <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -198,21 +150,70 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/analyser/FTAnalyser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="97" selection-start-line="97" selection-end-line="97" />
+            <state relative-caret-position="1311">
+              <caret line="84" column="5" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
               <folding>
                 <element signature="method#main#0;class#FTAnalyser#0" />
-                <element signature="method#FTAnalyser#0;class#FTAnalyser#0" />
                 <element signature="method#FTAnalyser#1;class#FTAnalyser#0" />
-                <element signature="class#2181:2280" />
-                <element signature="initializer##0;class#2181:2280" />
+                <element signature="class#2413:2512" />
+                <element signature="initializer##0;class#2413:2512" />
                 <element signature="method#calculateRatio#0;class#FTAnalyser#0" />
+                <element signature="method#processRatio#0;class#FTAnalyser#0" />
                 <element signature="method#findLastLessSign#0;class#FTAnalyser#0" />
                 <element signature="method#findRightSide#0;class#FTAnalyser#0" />
                 <element signature="method#findRule#0;class#FTAnalyser#0" />
                 <element signature="method#createReverseRulesMap#0;class#FTAnalyser#0" />
                 <element signature="method#replaceByRule#0;class#FTAnalyser#0" />
                 <element signature="method#clear#0;class#FTAnalyser#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/ArithmeticExpressionParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="146">
+              <caret line="149" column="64" lean-forward="true" selection-start-line="149" selection-start-column="64" selection-end-line="149" selection-end-column="64" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#ArithmeticExpressionParser#0;class#ArithmeticExpressionParser#0" />
+                <element signature="method#main#0;class#ArithmeticExpressionParser#0" />
+                <element signature="method#releaseRecollection#0;class#ArithmeticExpressionParser#0" />
+                <element signature="method#isOpeningBracket#0;class#ArithmeticExpressionParser#0" />
+                <element signature="method#isClosingBracket#0;class#ArithmeticExpressionParser#0" />
+                <element signature="method#getPriority#0;class#ArithmeticExpressionParser#0" />
+                <element signature="method#getStackCopyAsWords#0;class#ArithmeticExpressionParser#0" />
+                <element signature="method#unwrap#0;class#ArithmeticExpressionParser#0" />
+                <element signature="method#handleIfThen#0;class#ArithmeticExpressionParser#0" />
+                <element signature="method#handleOpBlock#0;class#ArithmeticExpressionParser#0" />
+                <element signature="method#handleForStart#0;class#ArithmeticExpressionParser#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/controller/Controller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1868">
+              <caret line="321" column="30" selection-start-line="321" selection-start-column="30" selection-end-line="321" selection-end-column="30" />
+              <folding>
+                <element signature="e#3937#4073#0" />
+                <element signature="e#4079#4237#0" />
+                <element signature="e#4243#5578#0" />
+                <element signature="e#5584#6059#0" />
+                <element signature="e#6252#6728#0" />
+                <element signature="e#6065#6327#0" />
+                <element signature="e#6333#6791#0" />
+                <element signature="e#6797#7463#0" />
+                <element signature="e#7539#7708#0" />
+                <element signature="e#7714#7858#0" />
+                <element signature="e#8068#8218#0" />
+                <element signature="e#8224#9177#0" />
+                <element signature="e#9526#10030#0" />
+                <element signature="e#10036#10498#0" />
+                <element signature="e#10504#10813#0" />
               </folding>
             </state>
           </provider>
@@ -234,6 +235,9 @@
       <find>new Word</find>
       <find>table.getStack()</find>
       <find>table.getInput()</find>
+      <find>&quot;m&quot;</find>
+      <find>COND</find>
+      <find>lblIdx</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -270,7 +274,6 @@
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/grammar/Rule.java" />
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/grammar/RightSide.java" />
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/grammar/Word.java" />
-        <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/FTCreator.java" />
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/SSReader.java" />
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/Main.java" />
         <option value="$PROJECT_DIR$/res/program_poliz.txt" />
@@ -286,12 +289,14 @@
         <option value="$PROJECT_DIR$/res/grammar_3.xml" />
         <option value="$PROJECT_DIR$/res/program_3.txt" />
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/LexicalAnalyser.java" />
-        <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/controller/Controller.java" />
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/PParser.java" />
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/constants/InitKeywords.java" />
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/constants/TerminalSymbols.java" />
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/analyser/FTAnalyser.java" />
+        <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/entity/ForData.java" />
+        <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/FTCreator.java" />
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/ArithmeticExpressionParser.java" />
+        <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/controller/Controller.java" />
       </list>
     </option>
   </component>
@@ -317,7 +322,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -325,6 +329,11 @@
             <path>
               <item name="Translator" type="b2602c69:ProjectViewProjectNode" />
               <item name="Translator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Translator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Translator" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Translator" type="b2602c69:ProjectViewProjectNode" />
@@ -343,6 +352,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="cad" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Translator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Translator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="cad" type="462c0819:PsiDirectoryNode" />
+              <item name="forwarding" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Translator" type="b2602c69:ProjectViewProjectNode" />
@@ -370,6 +386,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -382,7 +399,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553535453018" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554134338499" />
     <property name="dynamic.classpath" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -562,8 +579,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main (1)" />
-        <item itemvalue="Application.ArithmeticExpressionParser" />
         <item itemvalue="Application.FTCreator" />
+        <item itemvalue="Application.ArithmeticExpressionParser" />
         <item itemvalue="Application.SSReader" />
         <item itemvalue="Application.FTAnalyser" />
       </list>
@@ -596,7 +613,18 @@
       <workItem from="1553442350763" duration="5638000" />
       <workItem from="1553453022142" duration="2186000" />
       <workItem from="1553502912235" duration="5094000" />
-      <workItem from="1553531408946" duration="3972000" />
+      <workItem from="1553531408946" duration="15654000" />
+      <workItem from="1553619324868" duration="246000" />
+      <workItem from="1553627369351" duration="8397000" />
+      <workItem from="1553679945312" duration="737000" />
+      <workItem from="1554104359358" duration="2731000" />
+      <workItem from="1554131628900" duration="633000" />
+      <workItem from="1554132480713" duration="2755000" />
+      <workItem from="1554135323337" duration="318000" />
+      <workItem from="1554144086033" duration="798000" />
+      <workItem from="1554222949131" duration="81000" />
+      <workItem from="1554231806299" duration="696000" />
+      <workItem from="1554572759413" duration="3232000" />
     </task>
     <task id="LOCAL-00001" summary="extend ArithmeticExpressionParser">
       <created>1553507339392</created>
@@ -605,21 +633,28 @@
       <option name="project" value="LOCAL" />
       <updated>1553507339393</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="included ArithmeticExpressionParser into Syntax Analyser">
+      <created>1553535506529</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1553535506529</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66354000" />
+    <option name="totallyTimeSpent" value="98660000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="Capture Tool" order="1" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="4" sideWeight="0.6703755" visible="true" weight="0.32401812" />
+      <window_info content_ui="combo" id="Project" order="4" sideWeight="0.6703755" visible="true" weight="0.21374622" />
       <window_info id="Structure" order="5" weight="0.25" />
       <window_info id="Favorites" order="6" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32888147" />
@@ -628,7 +663,7 @@
       <window_info anchor="bottom" id="Find" order="3" weight="0.32888147" />
       <window_info anchor="bottom" id="Database Changes" order="4" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="5" weight="0.45742905" />
-      <window_info anchor="bottom" id="Debug" order="6" weight="0.48414025" />
+      <window_info anchor="bottom" id="Debug" order="6" weight="0.45575958" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="9" />
@@ -689,7 +724,8 @@
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <MESSAGE value="extend ArithmeticExpressionParser" />
-    <option name="LAST_COMMIT_MESSAGE" value="extend ArithmeticExpressionParser" />
+    <MESSAGE value="included ArithmeticExpressionParser into Syntax Analyser" />
+    <option name="LAST_COMMIT_MESSAGE" value="included ArithmeticExpressionParser into Syntax Analyser" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -699,6 +735,12 @@
           <line>468</line>
           <properties />
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/ArithmeticExpressionParser.java</url>
+          <line>149</line>
+          <properties />
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -753,27 +795,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/exceptions/TranslatorException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/exceptions/LexicalException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/exceptions/AttributeNotFoundException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="4" column="59" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/exceptions/lexical/IdentifierRedeclarationException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="28">
@@ -816,27 +837,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/grammar/RightSide.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/grammar/Rule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="34" column="20" lean-forward="true" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/lexemes/Lexeme.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/table_style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
@@ -851,38 +851,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/grammar/GrammarReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/grammar.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="285" column="17" lean-forward="true" selection-start-line="285" selection-start-column="17" selection-end-line="285" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/grammar/GrammarMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="13" column="44" lean-forward="true" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/FTCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1219">
-          <caret line="282" selection-start-line="282" selection-end-line="282" />
         </state>
       </provider>
     </entry>
@@ -979,61 +951,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/res/semantic_subroutine.txt" />
     <entry file="file://$PROJECT_DIR$/res/semantic_subroutine.xml" />
-    <entry file="file://$PROJECT_DIR$/res/program_poliz.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/LexicalAnalyser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="273" column="19" lean-forward="true" selection-start-line="273" selection-start-column="19" selection-end-line="273" selection-end-column="19" />
-          <folding>
-            <element signature="e#1767#2040#0" />
-            <element signature="e#2046#2727#0" />
-            <element signature="e#2225#2236#0" />
-            <element signature="e#2733#3104#0" />
-            <element signature="e#3110#3554#0" />
-            <element signature="e#3950#4473#0" />
-            <element signature="e#4479#5010#0" />
-            <element signature="e#4877#4916#0" />
-            <element signature="e#7130#7519#0" />
-            <element signature="e#7525#7784#0" />
-            <element signature="e#10256#10257#0" expanded="true" />
-            <element signature="e#10280#10281#0" expanded="true" />
-            <element signature="e#13277#13437#0" />
-            <element signature="e#13443#13690#0" />
-            <element signature="e#14361#14471#0" />
-            <element signature="e#14593#15313#0" />
-            <element signature="e#15594#15916#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/SSReader.java" />
     <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/PParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/program_3.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/program.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -1041,154 +963,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
           <caret line="142" column="21" selection-start-line="142" selection-start-column="21" selection-end-line="142" selection-end-column="21" />
-          <folding>
-            <element signature="n#rule#0;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#0;n#grammar#0;n#!!top" />
-            <element signature="n#rule#1;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#1;n#grammar#0;n#!!top" />
-            <element signature="n#values#1;n#rule#1;n#grammar#0;n#!!top" />
-            <element signature="n#rule#2;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#2;n#grammar#0;n#!!top" />
-            <element signature="n#rule#3;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#3;n#grammar#0;n#!!top" />
-            <element signature="n#values#1;n#rule#3;n#grammar#0;n#!!top" />
-            <element signature="n#rule#4;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#4;n#grammar#0;n#!!top" />
-            <element signature="n#values#1;n#rule#4;n#grammar#0;n#!!top" />
-            <element signature="n#rule#5;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#5;n#grammar#0;n#!!top" />
-            <element signature="n#values#1;n#rule#5;n#grammar#0;n#!!top" />
-            <element signature="n#rule#6;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#6;n#grammar#0;n#!!top" />
-            <element signature="n#rule#7;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#7;n#grammar#0;n#!!top" />
-            <element signature="n#values#1;n#rule#7;n#grammar#0;n#!!top" />
-            <element signature="n#rule#8;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#8;n#grammar#0;n#!!top" />
-            <element signature="n#values#1;n#rule#8;n#grammar#0;n#!!top" />
-            <element signature="n#values#2;n#rule#8;n#grammar#0;n#!!top" />
-            <element signature="n#values#3;n#rule#8;n#grammar#0;n#!!top" />
-            <element signature="n#values#4;n#rule#8;n#grammar#0;n#!!top" />
-            <element signature="n#values#5;n#rule#8;n#grammar#0;n#!!top" />
-            <element signature="n#values#6;n#rule#8;n#grammar#0;n#!!top" />
-            <element signature="n#rule#9;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#9;n#grammar#0;n#!!top" />
-            <element signature="n#rule#10;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#10;n#grammar#0;n#!!top" />
-            <element signature="n#values#1;n#rule#10;n#grammar#0;n#!!top" />
-            <element signature="n#rule#11;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#11;n#grammar#0;n#!!top" />
-            <element signature="n#values#1;n#rule#11;n#grammar#0;n#!!top" />
-            <element signature="n#values#2;n#rule#11;n#grammar#0;n#!!top" />
-            <element signature="n#values#3;n#rule#11;n#grammar#0;n#!!top" />
-            <element signature="n#rule#12;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#12;n#grammar#0;n#!!top" />
-            <element signature="n#rule#13;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#13;n#grammar#0;n#!!top" />
-            <element signature="n#rule#14;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#14;n#grammar#0;n#!!top" />
-            <element signature="n#rule#15;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#15;n#grammar#0;n#!!top" />
-            <element signature="n#rule#16;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#16;n#grammar#0;n#!!top" />
-            <element signature="n#values#1;n#rule#16;n#grammar#0;n#!!top" />
-            <element signature="n#rule#17;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#17;n#grammar#0;n#!!top" />
-            <element signature="n#values#1;n#rule#17;n#grammar#0;n#!!top" />
-            <element signature="n#rule#18;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#18;n#grammar#0;n#!!top" />
-            <element signature="n#rule#19;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#19;n#grammar#0;n#!!top" />
-            <element signature="n#values#1;n#rule#19;n#grammar#0;n#!!top" />
-            <element signature="n#values#2;n#rule#19;n#grammar#0;n#!!top" />
-            <element signature="n#rule#20;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#20;n#grammar#0;n#!!top" />
-            <element signature="n#rule#21;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#21;n#grammar#0;n#!!top" />
-            <element signature="n#values#1;n#rule#21;n#grammar#0;n#!!top" />
-            <element signature="n#values#2;n#rule#21;n#grammar#0;n#!!top" />
-            <element signature="n#values#3;n#rule#21;n#grammar#0;n#!!top" />
-            <element signature="n#values#4;n#rule#21;n#grammar#0;n#!!top" />
-            <element signature="n#values#5;n#rule#21;n#grammar#0;n#!!top" />
-            <element signature="n#rule#22;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#22;n#grammar#0;n#!!top" />
-            <element signature="n#rule#23;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#23;n#grammar#0;n#!!top" />
-            <element signature="n#rule#24;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#24;n#grammar#0;n#!!top" />
-            <element signature="n#values#1;n#rule#24;n#grammar#0;n#!!top" />
-            <element signature="n#values#2;n#rule#24;n#grammar#0;n#!!top" />
-            <element signature="n#rule#25;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#25;n#grammar#0;n#!!top" />
-            <element signature="n#rule#26;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#26;n#grammar#0;n#!!top" />
-            <element signature="n#values#1;n#rule#26;n#grammar#0;n#!!top" />
-            <element signature="n#values#2;n#rule#26;n#grammar#0;n#!!top" />
-            <element signature="n#rule#27;n#grammar#0;n#!!top" />
-            <element signature="n#values#0;n#rule#27;n#grammar#0;n#!!top" />
-            <element signature="n#values#1;n#rule#27;n#grammar#0;n#!!top" />
-            <element signature="n#values#2;n#rule#27;n#grammar#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/grammar.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/analyser/TableElem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="26" column="61" lean-forward="true" selection-start-line="26" selection-start-column="61" selection-end-line="26" selection-end-column="61" />
-          <folding>
-            <element signature="method#TableElem#1;class#TableElem#0" />
-            <element signature="e#1559#1560#0" expanded="true" />
-            <element signature="e#1592#1593#0" expanded="true" />
-            <element signature="method#toString#0;class#TableElem#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/analyser/TableStructure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="41" column="18" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
-          <folding>
-            <element signature="method#TableStructure#0;class#TableStructure#0" />
-            <element signature="e#709#710#0" expanded="true" />
-            <element signature="e#737#738#0" expanded="true" />
-            <element signature="e#1010#1011#0" expanded="true" />
-            <element signature="e#1072#1073#0" expanded="true" />
-            <element signature="method#getInputFirstWord#0;class#TableStructure#0" />
-            <element signature="method#toString#0;class#TableStructure#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/controller/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4094">
-          <caret line="299" column="25" selection-start-line="299" selection-start-column="25" selection-end-line="299" selection-end-column="25" />
-          <folding>
-            <element signature="e#3937#4073#0" />
-            <element signature="e#4079#4237#0" />
-            <element signature="e#4243#5578#0" />
-            <element signature="e#5584#6059#0" />
-            <element signature="e#6065#6327#0" />
-            <element signature="e#6333#6791#0" />
-            <element signature="e#6797#7463#0" />
-            <element signature="e#7539#7708#0" />
-            <element signature="e#7714#7858#0" />
-            <element signature="e#7864#8062#0" />
-            <element signature="e#8068#8218#0" />
-            <element signature="e#8224#9177#0" />
-            <element signature="e#9526#10030#0" />
-            <element signature="e#10036#10498#0" />
-            <element signature="e#10504#10813#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1199,17 +973,155 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/lexemes/Lexeme.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/program_poliz.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/program_3.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/entity/ForData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="713">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/grammar/GrammarMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/FTCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="19" column="38" lean-forward="true" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/Signs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/grammar/Word.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/grammar/RightSide.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/grammar/Rule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/grammar/GrammarReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/LexicalAnalyser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5635">
+          <caret line="273" column="19" selection-start-line="273" selection-start-column="19" selection-end-line="273" selection-end-column="19" />
+          <folding>
+            <element signature="e#10256#10257#0" expanded="true" />
+            <element signature="e#10280#10281#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/constants/InitKeywords.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="488">
+          <caret line="41" column="15" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/analyser/TableStructure.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="method#TableStructure#0;class#TableStructure#0" />
+            <element signature="method#TableStructure#1;class#TableStructure#0" />
+            <element signature="method#getInputFirstWord#0;class#TableStructure#0" />
+            <element signature="method#moveWordFromInputToStack#0;class#TableStructure#0" />
+            <element signature="method#clear#0;class#TableStructure#0" />
+            <element signature="method#toString#0;class#TableStructure#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/grammar.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="27" column="41" lean-forward="true" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/grammar.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/constants/TerminalSymbols.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="35" column="34" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/program.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/analyser/FTAnalyser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="97" selection-start-line="97" selection-end-line="97" />
+        <state relative-caret-position="1311">
+          <caret line="84" column="5" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
           <folding>
             <element signature="method#main#0;class#FTAnalyser#0" />
-            <element signature="method#FTAnalyser#0;class#FTAnalyser#0" />
             <element signature="method#FTAnalyser#1;class#FTAnalyser#0" />
-            <element signature="class#2181:2280" />
-            <element signature="initializer##0;class#2181:2280" />
+            <element signature="class#2413:2512" />
+            <element signature="initializer##0;class#2413:2512" />
             <element signature="method#calculateRatio#0;class#FTAnalyser#0" />
+            <element signature="method#processRatio#0;class#FTAnalyser#0" />
             <element signature="method#findLastLessSign#0;class#FTAnalyser#0" />
             <element signature="method#findRightSide#0;class#FTAnalyser#0" />
             <element signature="method#findRule#0;class#FTAnalyser#0" />
@@ -1220,37 +1132,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/constants/TerminalSymbols.java">
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-19">
-          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/grammar/Word.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/constants/InitKeywords.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="31" column="29" lean-forward="true" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
-        </state>
+        <state relative-caret-position="-138" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/ArithmeticExpressionParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="91" column="17" lean-forward="true" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
+        <state relative-caret-position="146">
+          <caret line="149" column="64" lean-forward="true" selection-start-line="149" selection-start-column="64" selection-end-line="149" selection-end-column="64" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#ArithmeticExpressionParser#0;class#ArithmeticExpressionParser#0" />
             <element signature="method#main#0;class#ArithmeticExpressionParser#0" />
             <element signature="method#releaseRecollection#0;class#ArithmeticExpressionParser#0" />
-            <element signature="method#add#0;class#ArithmeticExpressionParser#0" />
+            <element signature="method#isOpeningBracket#0;class#ArithmeticExpressionParser#0" />
+            <element signature="method#isClosingBracket#0;class#ArithmeticExpressionParser#0" />
             <element signature="method#getPriority#0;class#ArithmeticExpressionParser#0" />
+            <element signature="method#getStackCopyAsWords#0;class#ArithmeticExpressionParser#0" />
+            <element signature="method#unwrap#0;class#ArithmeticExpressionParser#0" />
+            <element signature="method#handleIfThen#0;class#ArithmeticExpressionParser#0" />
+            <element signature="method#handleOpBlock#0;class#ArithmeticExpressionParser#0" />
+            <element signature="method#handleForStart#0;class#ArithmeticExpressionParser#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/analyser/TableElem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1058">
+          <caret line="63" column="22" selection-start-line="63" selection-start-column="22" selection-end-line="63" selection-end-column="22" />
+          <folding>
+            <element signature="e#1559#1560#0" expanded="true" />
+            <element signature="e#1592#1593#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1868">
+          <caret line="321" column="30" selection-start-line="321" selection-start-column="30" selection-end-line="321" selection-end-column="30" />
+          <folding>
+            <element signature="e#3937#4073#0" />
+            <element signature="e#4079#4237#0" />
+            <element signature="e#4243#5578#0" />
+            <element signature="e#5584#6059#0" />
+            <element signature="e#6252#6728#0" />
+            <element signature="e#6065#6327#0" />
+            <element signature="e#6333#6791#0" />
+            <element signature="e#6797#7463#0" />
+            <element signature="e#7539#7708#0" />
+            <element signature="e#7714#7858#0" />
+            <element signature="e#8068#8218#0" />
+            <element signature="e#8224#9177#0" />
+            <element signature="e#9526#10030#0" />
+            <element signature="e#10036#10498#0" />
+            <element signature="e#10504#10813#0" />
           </folding>
         </state>
       </provider>

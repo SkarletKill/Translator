@@ -159,6 +159,15 @@ public class Controller {
     private TableColumn<TableElem, String> ptPoliz;
 
     @FXML
+    private TableView<TableElem> polizParsed;
+
+    @FXML
+    private TableColumn<TableElem, Integer> pptId;
+
+    @FXML
+    private TableColumn<TableElem, String> pptPoliz;
+
+    @FXML
     private TableView<PolizTableElem> polizCalculation;
 
     @FXML
@@ -175,6 +184,7 @@ public class Controller {
         initFields();
         initLexerTables();
         initParseTable();
+        initParsedTable();
         initPolizTable();
     }
 
@@ -215,6 +225,11 @@ public class Controller {
         ptInput.setCellValueFactory(new PropertyValueFactory<>("input"));
         ptBasis.setCellValueFactory(new PropertyValueFactory<>("basis"));
         ptPoliz.setCellValueFactory(new PropertyValueFactory<>("poliz"));
+    }
+
+    private void initParsedTable() {
+        pptId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        pptPoliz.setCellValueFactory(new PropertyValueFactory<>("poliz"));
     }
 
     private void initPolizTable() {
@@ -268,6 +283,11 @@ public class Controller {
         this.parseTable.setItems(parseTable);
     }
 
+    private void fillParsedTable() {
+        ObservableList<TableElem> parsedTable = FXCollections.observableArrayList(TableElem.getParseTable());
+        this.polizParsed.setItems(parsedTable);
+    }
+
     public void onMatrixRelationShowClick() {
         FTCreator.writeSimpleGrammar(creator.getRules().toString(), null);
         creator.showHtml();
@@ -299,6 +319,7 @@ public class Controller {
         if (lexer.getExceptions().isEmpty()) {
             analyser.analyse();
             onParseTableShowClick();
+            fillParsedTable();
             synzerPass = true;
         } else {
             synzerPass = false;
