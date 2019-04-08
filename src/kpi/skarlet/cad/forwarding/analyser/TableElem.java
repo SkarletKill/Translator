@@ -73,4 +73,8 @@ public class TableElem {
                 ", basis='" + basis + '\'' +
                 '}';
     }
+
+    public static void clear() {
+        parseTable.clear();
+    }
 }

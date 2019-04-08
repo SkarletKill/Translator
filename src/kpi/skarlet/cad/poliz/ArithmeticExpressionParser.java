@@ -1,10 +1,13 @@
 package kpi.skarlet.cad.poliz;
 
+import kpi.skarlet.cad.forwarding.analyser.TableElem;
 import kpi.skarlet.cad.forwarding.constants.WordType;
 import kpi.skarlet.cad.forwarding.grammar.Word;
 import kpi.skarlet.cad.lexer.LexicalAnalyser;
 import kpi.skarlet.cad.lexer.constants.TerminalSymbols;
 import kpi.skarlet.cad.lexer.lexemes.Lexeme;
+import kpi.skarlet.cad.lexer.lexemes.LexemeType;
+import kpi.skarlet.cad.poliz.constants.PolizConstants;
 import kpi.skarlet.cad.poliz.entity.ForData;
 
 import java.util.ArrayList;
@@ -15,23 +18,26 @@ import java.util.stream.Collectors;
 public class ArithmeticExpressionParser implements PParser {
     //    private final String PATH = "res/program.txt";
     private TerminalSymbols TS;
+    private PolizConstants PC;
     private LexicalAnalyser lexer;
-    private List<Lexeme> parsed;
+    private List<Lexeme> parsed;            // result POLIZ
     private Stack<Lexeme[]> stack;
-    private Stack<ForData> forDataStack;
-    private boolean underlineFirst = false;
-    private  boolean forUL2Filter = false;
+    private Stack<ForData> forDataStack;    // structure for remember parts of 'for' cycle to using ones after
+    private boolean underlineFirst = false; // underline as separator in 'for' cycle
+    private boolean forUL2Filter = false;   // filter after second underline in 'for' (using for move incrementation to end of operator block)
+    private Lexeme type = null;             // filter after type (using for doing specific act)
+    private boolean gotoMemory = false;     // last lexeme was goto
     private boolean outputChanged = false;
-    private int lblIdx = 1;
-    private final String JNE = "JNE";
-    private final String JMP = "JMP";
-    private final String LBL = "m";
+    private int lblIdx;                     // initialization in constructor
+    private int lblCode = 100;
+    private int spCode = 666;   // code for special lexemes, generated only in POLIZ parser (JNE, JMP, etc.)
 
     public ArithmeticExpressionParser(LexicalAnalyser lexer) {
         this.lexer = lexer;
         this.parsed = new ArrayList<>();
         this.stack = new Stack<>();
         this.forDataStack = new Stack<>();
+        TableElem.clear();
     }
 
     public static void main(String[] args) {
@@ -53,15 +59,7 @@ public class ArithmeticExpressionParser implements PParser {
         for (int i = 0; i < expression.size(); i++) {
             Lexeme lexeme = expression.get(i);
             if (forUL2Filter) {
-                // invocation target exception
-                if (lexeme.getCode() != getCode(TS.CLOSING_SQUARE_BRACE)) {
-                    forDataStack.peek().pushEndIter(lexeme);
-                } else {
-                    // here is a CLOSING_SQUARE_BRACE
-                    parsed.add(new Lexeme(LBL + lblIdx++, lexeme.getLine(), getCode(TS.CYCLE_FOR), false));
-                    parsed.add(new Lexeme(JNE, lexeme.getLine(), getCode(TS.CYCLE_FOR), false));
-                    forUL2Filter = false;
-                }
+                filtrationCycleAfterUL2(lexeme);
             } else {
                 int lexCode = lexeme.getCode();
                 int lexPriority = getPriority(lexeme);
@@ -71,12 +69,23 @@ public class ArithmeticExpressionParser implements PParser {
                     outputChanged = true;
                 } else if (lexPriority == 99) {
                     // it's a keyword
-                    if (lexCode == getCode(TS.TYPE_INT) || lexCode == getCode(TS.TYPE_FLOAT)) {
-
+                    if (lexCode == getCode(TS.TYPE_INT)) {
+                        this.type = new Lexeme(PC.TYPE_INT, lexeme.getLine(), spCode, false);
+                    } else if (lexCode == getCode(TS.TYPE_FLOAT)) {
+                        this.type = new Lexeme(PC.TYPE_FLOAT, lexeme.getLine(), spCode, false);
+                    } else if (lexCode == getCode(TS.EXCLAMATION)) {
+                        parsed.add(type);
+                        type = null;
                     } else if (lexCode == getCode(TS.LABEL_START)) {
-
+                        gotoMemory = true;
                     } else if (lexCode == getCode(TS.LABEL)) {
-
+                        if (gotoMemory) {
+                            parsed.add(new Lexeme(PC.LBL + lexeme.getSpCode(), lexeme.getLine(), lexCode, false));
+                            parsed.add(new Lexeme(PC.JMP, lexeme.getLine(), spCode, false));
+                            gotoMemory = false;
+                        } else {
+                            parsed.add(new Lexeme(PC.LBL + lexeme.getSpCode() + TS.COLON, lexeme.getLine(), lexCode, false));
+                        }
                     } else if (lexCode == getCode(TS.INPUT_OPERATOR)) {
 
                     } else if (lexCode == getCode(TS.INPUT_JOINT)) {
@@ -88,7 +97,7 @@ public class ArithmeticExpressionParser implements PParser {
                     } else if (lexCode == getCode(TS.END)) {
                         if (unwrap(stack.peek()).getCode() == getCode(TS.CONDITIONAL_OPERATOR)) {
                             Lexeme[] condFull = stack.pop();
-                            parsed.add(new Lexeme(condFull[1].getName() + ":", condFull[0].getLine(), condFull[0].getCode(), false));
+                            parsed.add(new Lexeme(condFull[1].getName() + TS.COLON, condFull[0].getLine(), lblCode, false));
                             i++; // skip next semicolon
                         } else {
                             parsed.add(unwrap(stack.pop()));
@@ -127,30 +136,14 @@ public class ArithmeticExpressionParser implements PParser {
                     if (lexCode == getCode(TS.CYCLE_FOR)) {
                         handleForStart(lexeme);
                     } else if (lexCode == getCode(TS.UNDERLINE)) {
-                        underlineFirst = !underlineFirst;
-                        if (underlineFirst) {
-                            parsed.addAll(forDataStack.peek().popStart());
-                            Lexeme[] lexemes = stack.peek();    // must be 'for'
-                            if (unwrap(lexemes).getCode() == getCode(TS.CYCLE_FOR)) {   // what it is?
-                                stack.pop();
-                                Lexeme[] nLexemes = new Lexeme[]{lexemes[0],
-                                        lexemes[1],
-                                        new Lexeme(LBL + lblIdx, lexemes[0].getLine(), lexemes[0].getCode(), false)};
-                                stack.push(nLexemes);
-                            } else {
-                                System.err.println("ArithmeticExpressionParser >> expected 'for' in stack, after first underline");
-                            }
-                        } else {    // second underline
-                            forUL2Filter = true;
-                            // else skip
-                        }
+                        handleCycleSeparator();     // handle underline
                     } else {
                         if (lexCode == getCode(TS.SEMICOLON)) {     // semicolon - end for
                             if (unwrap(stack.peek()).getCode() == getCode(TS.CYCLE_FOR)) {
                                 Lexeme[] stackFor = stack.pop();
                                 parsed.add(stackFor[1]);
-                                parsed.add(new Lexeme(JMP, stackFor[0].getLine(), stackFor[0].getCode(), false));
-                                parsed.add(new Lexeme(stackFor[2].getName() + ":", stackFor[2].getLine(), stackFor[2].getCode(), false));
+                                parsed.add(new Lexeme(PC.JMP, stackFor[0].getLine(), spCode, false));
+                                parsed.add(new Lexeme(stackFor[2].getName() + ":", stackFor[2].getLine(), lblCode, false));
 //                                stack.push(wrap(lexeme));     // need or not?
                             } else
                                 continue;
@@ -270,23 +263,6 @@ public class ArithmeticExpressionParser implements PParser {
         }
     }
 
-    private void handleIfThen() {
-        Lexeme[] lexemes = stack.peek();
-        if (!lexemes[0].getName().equals(TS.CONDITIONAL_OPERATOR)) {
-            System.err.println("ArithmeticExpressionParser >> Expected 'if' but found " + lexemes[0].getName());
-        } else {
-            parsed.add(new Lexeme(LBL + lblIdx, lexemes[0].getCode(), getCode(TS.CONDITIONAL_OPERATOR), false));
-            parsed.add(new Lexeme(JNE, lexemes[0].getCode(), getCode(TS.CONDITIONAL_OPERATOR), false));
-
-            // !!! add lbl to label table
-
-            stack.pop();
-            Lexeme[] nLexemes = new Lexeme[]{lexemes[0],
-                    new Lexeme(LBL + lblIdx++, lexemes[0].getLine(), lexemes[0].getCode(), false)};
-            stack.push(nLexemes);
-        }
-    }
-
     // return needed change of iterator
     private int handleOpBlock() {
         // !!! not tested
@@ -295,7 +271,7 @@ public class ArithmeticExpressionParser implements PParser {
             // analogue to END ?
             if (unwrap(stack.peek()).getCode() == getCode(TS.CONDITIONAL_OPERATOR)) {
                 Lexeme[] condFull = stack.pop();
-                parsed.add(new Lexeme(condFull[1].getName() + ":", condFull[0].getLine(), condFull[0].getCode(), false));
+                parsed.add(new Lexeme(condFull[1].getName() + ":", condFull[0].getLine(), lblCode, false));
                 return 1; // skip next semicolon
             } else {
                 parsed.add(unwrap(stack.pop()));
@@ -311,12 +287,72 @@ public class ArithmeticExpressionParser implements PParser {
         }
     }
 
+    private void handleIfThen() {
+        Lexeme[] lexemes = stack.peek();
+        if (!lexemes[0].getName().equals(TS.CONDITIONAL_OPERATOR)) {
+            System.err.println("ArithmeticExpressionParser >> Expected 'if' but found " + lexemes[0].getName());
+        } else {
+            parsed.add(new Lexeme(PC.LBL + lblIdx, lexemes[0].getLine(), getCode(TS.CONDITIONAL_OPERATOR), false));
+            parsed.add(new Lexeme(PC.JNE, lexemes[0].getLine(), spCode, false));
+
+            // !!! add lbl to label table
+
+            stack.pop();
+            Lexeme[] nLexemes = new Lexeme[]{lexemes[0],
+                    new Lexeme(PC.LBL + lblIdx++, lexemes[0].getLine(), lexemes[0].getCode(), false)};
+            stack.push(nLexemes);
+        }
+    }
+
     private void handleForStart(Lexeme lexeme) {
         ForData forData = new ForData();
-        forData.pushStart(new Lexeme(LBL + lblIdx + ":", lexeme.getCode(), getCode(TS.CYCLE_FOR), false));
+        forData.pushStart(new Lexeme(PC.LBL + lblIdx + ":", lexeme.getCode(), lblCode, false));
         forDataStack.push(forData);
         Lexeme[] nLexemes = new Lexeme[]{lexeme,
-                new Lexeme(LBL + lblIdx++, lexeme.getLine(), lexeme.getCode(), false)};
+                new Lexeme(PC.LBL + lblIdx++, lexeme.getLine(), lexeme.getCode(), false)};
         stack.push(nLexemes);
+    }
+
+    private void handleCycleSeparator() {
+        underlineFirst = !underlineFirst;
+        if (underlineFirst) {
+            parsed.addAll(forDataStack.peek().popStart());
+            Lexeme[] lexemes = stack.peek();    // must be 'for'
+            if (unwrap(lexemes).getCode() == getCode(TS.CYCLE_FOR)) {   // what it is?
+                stack.pop();
+                Lexeme[] nLexemes = new Lexeme[]{lexemes[0],
+                        lexemes[1],
+                        new Lexeme(PC.LBL + lblIdx, lexemes[0].getLine(), lexemes[0].getCode(), false)};
+                stack.push(nLexemes);
+            } else {
+                System.err.println("ArithmeticExpressionParser >> expected 'for' in stack, after first underline");
+            }
+        } else {    // second underline
+            forUL2Filter = true;
+            // else skip
+        }
+    }
+
+    private void filtrationCycleAfterUL2(Lexeme lexeme) {
+        // invocation target exception
+        if (lexeme.getCode() != getCode(TS.CLOSING_SQUARE_BRACE)) {
+            forDataStack.peek().pushEndIter(lexeme);
+        } else {
+            // here is a CLOSING_SQUARE_BRACE
+            parsed.add(new Lexeme(PC.LBL + lblIdx++, lexeme.getLine(), getCode(TS.CYCLE_FOR), false));
+            parsed.add(new Lexeme(PC.JNE, lexeme.getLine(), spCode, false));
+            forUL2Filter = false;
+        }
+    }
+
+
+    public void countLabels() {
+        this.lblIdx = this.lexer.getLabels().size() + 1;
+    }
+
+    public void clear() {
+        this.parsed.clear();
+        this.stack.clear();
+        this.forDataStack.clear();
     }
 }

@@ -307,6 +307,7 @@ public class Controller {
             ObservableList<Label> lbls = FXCollections.observableArrayList(lexer.getLabels());
             this.Labels.setItems(lbls);
             lexerPass = true;
+            analyser.countLabels();
         } else {
             this.errors = FXCollections.observableArrayList(lexer.getExceptions());
             this.Errors.setItems(errors);
@@ -317,6 +318,7 @@ public class Controller {
     public void onBuildSynzer() {
         this.onBuildLexer();
         if (lexer.getExceptions().isEmpty()) {
+            analyser.clear();
             analyser.analyse();
             onParseTableShowClick();
             fillParsedTable();

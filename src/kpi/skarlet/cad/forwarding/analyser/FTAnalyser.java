@@ -174,9 +174,14 @@ public class FTAnalyser {
         table.getStack().add(replaced);
     }
 
+    public void countLabels() {
+        this.pBuilder.countLabels();
+    }
+
     public void clear() {
 //        creator.clear();
         try {
+            pBuilder.clear();
             table.clear();
         } catch (ConcurrentModificationException e) {
             // ignore

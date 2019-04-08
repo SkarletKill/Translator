@@ -47,5 +47,6 @@ public class InitKeywords extends HashMap<String, Integer> {
         put(TS.LABEL, 100);
         put(TS.IDENTIFIER, 101);
         put(TS.CONSTANT, 102);
+//        put("SW", 666);   // special word
     }
 }
