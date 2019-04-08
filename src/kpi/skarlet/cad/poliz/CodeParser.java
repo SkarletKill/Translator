@@ -6,7 +6,6 @@ import kpi.skarlet.cad.forwarding.grammar.Word;
 import kpi.skarlet.cad.lexer.LexicalAnalyser;
 import kpi.skarlet.cad.lexer.constants.TerminalSymbols;
 import kpi.skarlet.cad.lexer.lexemes.Lexeme;
-import kpi.skarlet.cad.lexer.lexemes.LexemeType;
 import kpi.skarlet.cad.poliz.constants.PolizConstants;
 import kpi.skarlet.cad.poliz.entity.ForData;
 
@@ -15,7 +14,7 @@ import java.util.List;
 import java.util.Stack;
 import java.util.stream.Collectors;
 
-public class ArithmeticExpressionParser implements PParser {
+public class CodeParser implements PolizParser {
     //    private final String PATH = "res/program.txt";
     private TerminalSymbols TS;
     private PolizConstants PC;
@@ -27,12 +26,13 @@ public class ArithmeticExpressionParser implements PParser {
     private boolean forUL2Filter = false;   // filter after second underline in 'for' (using for move incrementation to end of operator block)
     private Lexeme type = null;             // filter after type (using for doing specific act)
     private boolean gotoMemory = false;     // last lexeme was goto
+    private Boolean ioStream = null;        // input - true, output - false
     private boolean outputChanged = false;
     private int lblIdx;                     // initialization in constructor
     private int lblCode = 100;
     private int spCode = 666;   // code for special lexemes, generated only in POLIZ parser (JNE, JMP, etc.)
 
-    public ArithmeticExpressionParser(LexicalAnalyser lexer) {
+    public CodeParser(LexicalAnalyser lexer) {
         this.lexer = lexer;
         this.parsed = new ArrayList<>();
         this.stack = new Stack<>();
@@ -43,7 +43,7 @@ public class ArithmeticExpressionParser implements PParser {
     public static void main(String[] args) {
 //        LexicalAnalyser lexer = new LexicalAnalyser("int a, b, c, d, e, f! a = a + b * c - (d / e) / f * e");
         LexicalAnalyser lexer = new LexicalAnalyser("int a, b, c, d, e, f! a = 1 + 2 * 3 - (4 + 5) / 6 * 7");
-        ArithmeticExpressionParser parser = new ArithmeticExpressionParser(lexer);
+        CodeParser parser = new CodeParser(lexer);
         parser.getLexer().run();
         parser.parse(lexer.getLexemes().subList(15, lexer.getLexemes().size() - 2));
         System.out.println(parser.parsed);
@@ -87,14 +87,15 @@ public class ArithmeticExpressionParser implements PParser {
                             parsed.add(new Lexeme(PC.LBL + lexeme.getSpCode() + TS.COLON, lexeme.getLine(), lexCode, false));
                         }
                     } else if (lexCode == getCode(TS.INPUT_OPERATOR)) {
-
+                        ioStream = true;
                     } else if (lexCode == getCode(TS.INPUT_JOINT)) {
 
                     } else if (lexCode == getCode(TS.OUTPUT_OPERATOR)) {
-
+                        ioStream = false;
                     } else if (lexCode == getCode(TS.OUTPUT_JOINT)) {
 
                     } else if (lexCode == getCode(TS.END)) {
+                        if (ioStream != null) handleInputOutput(lexeme);    // end - end of cin/cout
                         if (unwrap(stack.peek()).getCode() == getCode(TS.CONDITIONAL_OPERATOR)) {
                             Lexeme[] condFull = stack.pop();
                             parsed.add(new Lexeme(condFull[1].getName() + TS.COLON, condFull[0].getLine(), lblCode, false));
@@ -104,11 +105,9 @@ public class ArithmeticExpressionParser implements PParser {
                             outputChanged = true;
                             i--;
                         }
-                    } /* else if (lexCode == getCode(TS.SEMICOLON)) {
-
-                }*/ else {
+                    } else {
                         // default scenario
-                        // COMMA, COLON, UNDERLINE, EXCLAMATION, END
+                        // COMMA, COLON, UNDERLINE?
                         stack.push(wrap(lexeme));
                     }
                 } else if (!stack.empty() && getPriority(unwrap(stack.peek())) >= lexPriority
@@ -119,7 +118,7 @@ public class ArithmeticExpressionParser implements PParser {
                 } else {    // lexPriority != 99 && (stack is empty || stack priority less || lexeme is opening bracket)
                     if (isClosingBracket(lexeme)) {
                         if (stack.empty()) {
-                            System.err.println("ArithmeticExpressionParser >> Stack is empty!!!");
+                            System.err.println("CodeParser >> Stack is empty!!!");
                         }
 
                         if (unwrap(stack.peek()).getCode() == lexCode - 1)     // the same type of bracket
@@ -139,7 +138,8 @@ public class ArithmeticExpressionParser implements PParser {
                         handleCycleSeparator();     // handle underline
                     } else {
                         if (lexCode == getCode(TS.SEMICOLON)) {     // semicolon - end for
-                            if (unwrap(stack.peek()).getCode() == getCode(TS.CYCLE_FOR)) {
+                            if (ioStream != null) handleInputOutput(lexeme);    // semicolon - end of cin/cout
+                            else if (unwrap(stack.peek()).getCode() == getCode(TS.CYCLE_FOR)) {
                                 Lexeme[] stackFor = stack.pop();
                                 parsed.add(stackFor[1]);
                                 parsed.add(new Lexeme(PC.JMP, stackFor[0].getLine(), spCode, false));
@@ -290,7 +290,7 @@ public class ArithmeticExpressionParser implements PParser {
     private void handleIfThen() {
         Lexeme[] lexemes = stack.peek();
         if (!lexemes[0].getName().equals(TS.CONDITIONAL_OPERATOR)) {
-            System.err.println("ArithmeticExpressionParser >> Expected 'if' but found " + lexemes[0].getName());
+            System.err.println("CodeParser >> Expected 'if' but found " + lexemes[0].getName());
         } else {
             parsed.add(new Lexeme(PC.LBL + lblIdx, lexemes[0].getLine(), getCode(TS.CONDITIONAL_OPERATOR), false));
             parsed.add(new Lexeme(PC.JNE, lexemes[0].getLine(), spCode, false));
@@ -325,12 +325,17 @@ public class ArithmeticExpressionParser implements PParser {
                         new Lexeme(PC.LBL + lblIdx, lexemes[0].getLine(), lexemes[0].getCode(), false)};
                 stack.push(nLexemes);
             } else {
-                System.err.println("ArithmeticExpressionParser >> expected 'for' in stack, after first underline");
+                System.err.println("CodeParser >> expected 'for' in stack, after first underline");
             }
         } else {    // second underline
             forUL2Filter = true;
             // else skip
         }
+    }
+
+    private void handleInputOutput(Lexeme lexeme) {
+        parsed.add(new Lexeme((ioStream) ? PC.INPUT : PC.OUTPUT, lexeme.getLine(), spCode, false));
+        ioStream = null;
     }
 
     private void filtrationCycleAfterUL2(Lexeme lexeme) {
@@ -344,7 +349,6 @@ public class ArithmeticExpressionParser implements PParser {
             forUL2Filter = false;
         }
     }
-
 
     public void countLabels() {
         this.lblIdx = this.lexer.getLabels().size() + 1;

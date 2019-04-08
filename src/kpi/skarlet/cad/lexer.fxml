@@ -35,6 +35,7 @@
                         <MenuItem fx:id="MenuBuildLexer" mnemonicParsing="false" onAction="#onBuildLexer" text="Analyse (Lexer only)" />
                         <MenuItem fx:id="MenuBuildSynzer" mnemonicParsing="false" onAction="#onBuildSynzer" text="Analyse (full)" />
                   <MenuItem fx:id="MenuBuildPolizCalculate" mnemonicParsing="false" onAction="#onBuildPolizCalculate" text="Calculate poliz" />
+                  <MenuItem fx:id="MenuBuildRun" mnemonicParsing="false" onAction="#onBuildExecute" text="Execute code" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
@@ -185,6 +186,38 @@
                                 </tabs>
                               </TabPane>
                            </content></Tab>
+                        <Tab text="Run">
+                           <content>
+                              <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+                                <tabs>
+                                  <Tab text="Input">
+                                       <content>
+                                          <TextArea fx:id="rtInputArea" prefHeight="200.0" prefWidth="200.0" />
+                                       </content>
+                                  </Tab>
+                                  <Tab text="Output">
+                                       <content>
+                                          <TextArea fx:id="rtOutputArea" editable="false" prefHeight="200.0" prefWidth="200.0" />
+                                       </content>
+                                  </Tab>
+                                    <Tab text="BIOS">
+                                       <content>
+                                          <VBox prefHeight="200.0" prefWidth="100.0">
+                                             <children>
+                                                <SplitPane dividerPositions="0.4" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" VBox.vgrow="ALWAYS">
+                                                  <items>
+                                                      <TextArea fx:id="rtbInputArea" prefHeight="200.0" prefWidth="200.0" promptText="input" />
+                                                      <TextArea fx:id="rtbOutputArea" editable="false" prefHeight="200.0" prefWidth="200.0" promptText="output" />
+                                                  </items>
+                                                </SplitPane>
+                                             </children>
+                                          </VBox>
+                                       </content>
+                                    </Tab>
+                                </tabs>
+                              </TabPane>
+                           </content>
+                        </Tab>
                     </tabs>
                   </TabPane>
                     </children>

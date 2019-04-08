@@ -36,37 +36,10 @@ public class Controller {
     private FTAnalyser analyser;
 
     @FXML
-    private MenuItem menuFileOpen;
-
-    @FXML
-    private MenuItem menuFileSave;
-
-    @FXML
-    private MenuItem menuFileClose;
-
-    @FXML
     public MenuItem menuShowGrammar;
 
     @FXML
-    private MenuItem menuShowParseTable;
-
-    @FXML
-    private MenuItem menuShowMatrixRelation;
-
-    @FXML
-    private MenuItem MenuBuildLexer;
-
-    @FXML
-    private MenuItem MenuBuildSynzer;
-
-    @FXML
-    private MenuItem MenuHelpAbout;
-
-    @FXML
     private TextArea textArea;
-
-    @FXML
-    private TabPane tabPane;
 
     @FXML
     private TableView<Lexeme> Lexemes;
@@ -126,9 +99,6 @@ public class Controller {
     private TableColumn<Label, String> lbltName;
 
     @FXML
-    private Tab errorTab;
-
-    @FXML
     private TableView<TranslatorException> Errors;
 
     @FXML
@@ -178,6 +148,18 @@ public class Controller {
 
     @FXML
     private TableColumn<PolizTableElem, String> pctPoliz;
+
+    @FXML
+    private TextArea rtInputArea;
+
+    @FXML
+    private TextArea rtOutputArea;
+
+    @FXML
+    private TextArea rtbInputArea;
+
+    @FXML
+    private TextArea rtbOutputArea;
 
     @FXML
     void initialize() {
@@ -338,6 +320,11 @@ public class Controller {
         } else {
             JOptionPane.showMessageDialog(null, "Please run syntax analyser before calculating POLIZ");
         }
+    }
+
+    public void onBuildExecute() {
+        // empty body now
+        JOptionPane.showMessageDialog(null, "here will be result of program");
     }
 
     private void clearTables() {

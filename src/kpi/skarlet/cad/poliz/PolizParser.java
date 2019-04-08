@@ -4,6 +4,6 @@ import kpi.skarlet.cad.lexer.lexemes.Lexeme;
 
 import java.util.List;
 
-public interface PParser {
+public interface PolizParser {
     void parse(List<Lexeme> expression);
 }

@@ -11,14 +11,14 @@ import kpi.skarlet.cad.forwarding.grammar.Word;
 import kpi.skarlet.cad.lexer.LexicalAnalyser;
 import kpi.skarlet.cad.lexer.exceptions.lexical.UnknownSymbolException;
 import kpi.skarlet.cad.lexer.lexemes.Lexeme;
-import kpi.skarlet.cad.poliz.ArithmeticExpressionParser;
+import kpi.skarlet.cad.poliz.CodeParser;
 
 import javax.swing.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class FTAnalyser {
-    private ArithmeticExpressionParser pBuilder;
+    private CodeParser pBuilder;
     private List<Lexeme> lexemes;
     private FTCreator creator;
     private TableStructure table;
@@ -36,7 +36,7 @@ public class FTAnalyser {
         LexicalAnalyser lexer = new LexicalAnalyser();
         lexer.run();
         lexemes = lexer.getLexemes();
-        this.pBuilder = new ArithmeticExpressionParser(lexer);
+        this.pBuilder = new CodeParser(lexer);
 
         this.creator = new FTCreator();
         this.reversedRules = createReverseRulesMap();
@@ -45,7 +45,7 @@ public class FTAnalyser {
 
     public FTAnalyser(LexicalAnalyser lexer, FTCreator creator) {
         this.lexemes = lexer.getLexemes();
-        this.pBuilder = new ArithmeticExpressionParser(lexer);
+        this.pBuilder = new CodeParser(lexer);
         this.creator = creator;
         this.reversedRules = createReverseRulesMap();
         this.table = new TableStructure(new ArrayList<>(), new ArrayList<>());

@@ -6,4 +6,6 @@ public interface PolizConstants {
     String JMP = "JMP";
     String TYPE_INT = "TI";
     String TYPE_FLOAT = "TF";
+    String INPUT = "IN";
+    String OUTPUT = "OUT";
 }
