@@ -194,4 +194,8 @@ public class FTAnalyser {
     public List<Word> getPoliz() {
         return poliz;
     }
+
+    public CodeParser getBuilder() {
+        return pBuilder;
+    }
 }

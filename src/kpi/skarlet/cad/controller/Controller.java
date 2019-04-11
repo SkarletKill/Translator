@@ -17,6 +17,7 @@ import kpi.skarlet.cad.lexer.lexemes.Label;
 import kpi.skarlet.cad.lexer.lexemes.Lexeme;
 import kpi.skarlet.cad.poliz.PolizCalculator;
 import kpi.skarlet.cad.poliz.entity.PolizTableElem;
+import kpi.skarlet.cad.poliz.performer.Performer;
 import org.apache.commons.io.FileUtils;
 
 import javax.swing.*;
@@ -34,6 +35,7 @@ public class Controller {
     private boolean synzerPass;
     private FTCreator creator;
     private FTAnalyser analyser;
+    private Performer codePerformer;
 
     @FXML
     public MenuItem menuShowGrammar;
@@ -174,6 +176,7 @@ public class Controller {
         lexer = new LexicalAnalyser();
         creator = new FTCreator();
         analyser = new FTAnalyser(lexer, creator);
+        codePerformer = new Performer();
     }
 
     private void initLexerTables() {
@@ -302,6 +305,7 @@ public class Controller {
         if (lexer.getExceptions().isEmpty()) {
             analyser.clear();
             analyser.analyse();
+            codePerformer.perform(analyser.getBuilder());
             onParseTableShowClick();
             fillParsedTable();
             synzerPass = true;

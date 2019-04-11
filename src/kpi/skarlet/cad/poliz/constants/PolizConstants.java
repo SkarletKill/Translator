@@ -8,4 +8,6 @@ public interface PolizConstants {
     String TYPE_FLOAT = "TF";
     String INPUT = "IN";
     String OUTPUT = "OUT";
+
+    int SP_CODE = 666;  // code for special lexemes, generated only in POLIZ parser (JNE, JMP, etc.)
 }

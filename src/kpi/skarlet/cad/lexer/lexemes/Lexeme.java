@@ -115,6 +115,14 @@ public class Lexeme {
         return (lexemeCode == 100) ? spCode : null;
     }
 
+    public void setName(String lexeme) {
+        this.lexeme = lexeme;
+    }
+
+    public void setSpCode(Integer spCode) {
+        this.spCode = spCode;
+    }
+
     @Override
     public String toString() {
         return lexeme;

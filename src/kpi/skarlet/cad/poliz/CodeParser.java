@@ -4,10 +4,12 @@ import kpi.skarlet.cad.forwarding.analyser.TableElem;
 import kpi.skarlet.cad.forwarding.constants.WordType;
 import kpi.skarlet.cad.forwarding.grammar.Word;
 import kpi.skarlet.cad.lexer.LexicalAnalyser;
+import kpi.skarlet.cad.lexer.constants.CharacterConstants;
 import kpi.skarlet.cad.lexer.constants.TerminalSymbols;
 import kpi.skarlet.cad.lexer.lexemes.Lexeme;
 import kpi.skarlet.cad.poliz.constants.PolizConstants;
 import kpi.skarlet.cad.poliz.entity.ForData;
+import kpi.skarlet.cad.poliz.memory.Label;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,7 @@ public class CodeParser implements PolizParser {
     private LexicalAnalyser lexer;
     private List<Lexeme> parsed;            // result POLIZ
     private Stack<Lexeme[]> stack;
+    private List<Label> labels;
     private Stack<ForData> forDataStack;    // structure for remember parts of 'for' cycle to using ones after
     private boolean underlineFirst = false; // underline as separator in 'for' cycle
     private boolean forUL2Filter = false;   // filter after second underline in 'for' (using for move incrementation to end of operator block)
@@ -30,12 +33,12 @@ public class CodeParser implements PolizParser {
     private boolean outputChanged = false;
     private int lblIdx;                     // initialization in constructor
     private int lblCode = 100;
-    private int spCode = 666;   // code for special lexemes, generated only in POLIZ parser (JNE, JMP, etc.)
 
     public CodeParser(LexicalAnalyser lexer) {
         this.lexer = lexer;
         this.parsed = new ArrayList<>();
         this.stack = new Stack<>();
+        this.labels = new ArrayList<>();
         this.forDataStack = new Stack<>();
         TableElem.clear();
     }
@@ -70,9 +73,9 @@ public class CodeParser implements PolizParser {
                 } else if (lexPriority == 99) {
                     // it's a keyword
                     if (lexCode == getCode(TS.TYPE_INT)) {
-                        this.type = new Lexeme(PC.TYPE_INT, lexeme.getLine(), spCode, false);
+                        this.type = new Lexeme(PC.TYPE_INT, lexeme.getLine(), PC.SP_CODE, false);
                     } else if (lexCode == getCode(TS.TYPE_FLOAT)) {
-                        this.type = new Lexeme(PC.TYPE_FLOAT, lexeme.getLine(), spCode, false);
+                        this.type = new Lexeme(PC.TYPE_FLOAT, lexeme.getLine(), PC.SP_CODE, false);
                     } else if (lexCode == getCode(TS.EXCLAMATION)) {
                         parsed.add(type);
                         type = null;
@@ -80,11 +83,13 @@ public class CodeParser implements PolizParser {
                         gotoMemory = true;
                     } else if (lexCode == getCode(TS.LABEL)) {
                         if (gotoMemory) {
-                            parsed.add(new Lexeme(PC.LBL + lexeme.getSpCode(), lexeme.getLine(), lexCode, false));
-                            parsed.add(new Lexeme(PC.JMP, lexeme.getLine(), spCode, false));
+                            parsed.add(new Lexeme(PC.LBL + lexeme.getSpCode(), lexeme.getLine(), lblCode, false));
+                            parsed.add(new Lexeme(PC.JMP, lexeme.getLine(), PC.SP_CODE, false));
                             gotoMemory = false;
+                            recordLabel(-1);
                         } else {
-                            parsed.add(new Lexeme(PC.LBL + lexeme.getSpCode() + TS.COLON, lexeme.getLine(), lexCode, false));
+                            parsed.add(new Lexeme(PC.LBL + lexeme.getSpCode() + TS.COLON, lexeme.getLine(), lblCode, false));
+                            recordLabel(0);
                         }
                     } else if (lexCode == getCode(TS.INPUT_OPERATOR)) {
                         ioStream = true;
@@ -99,6 +104,7 @@ public class CodeParser implements PolizParser {
                         if (unwrap(stack.peek()).getCode() == getCode(TS.CONDITIONAL_OPERATOR)) {
                             Lexeme[] condFull = stack.pop();
                             parsed.add(new Lexeme(condFull[1].getName() + TS.COLON, condFull[0].getLine(), lblCode, false));
+                            recordLabel(0);
                             i++; // skip next semicolon
                         } else {
                             parsed.add(unwrap(stack.pop()));
@@ -142,8 +148,11 @@ public class CodeParser implements PolizParser {
                             else if (unwrap(stack.peek()).getCode() == getCode(TS.CYCLE_FOR)) {
                                 Lexeme[] stackFor = stack.pop();
                                 parsed.add(stackFor[1]);
-                                parsed.add(new Lexeme(PC.JMP, stackFor[0].getLine(), spCode, false));
+                                recordLabel(0);
+                                // here is the right order
+                                parsed.add(new Lexeme(PC.JMP, stackFor[0].getLine(), PC.SP_CODE, false));
                                 parsed.add(new Lexeme(stackFor[2].getName() + ":", stackFor[2].getLine(), lblCode, false));
+                                recordLabel(0);
 //                                stack.push(wrap(lexeme));     // need or not?
                             } else
                                 continue;
@@ -272,6 +281,7 @@ public class CodeParser implements PolizParser {
             if (unwrap(stack.peek()).getCode() == getCode(TS.CONDITIONAL_OPERATOR)) {
                 Lexeme[] condFull = stack.pop();
                 parsed.add(new Lexeme(condFull[1].getName() + ":", condFull[0].getLine(), lblCode, false));
+                recordLabel(0);
                 return 1; // skip next semicolon
             } else {
                 parsed.add(unwrap(stack.pop()));
@@ -292,24 +302,24 @@ public class CodeParser implements PolizParser {
         if (!lexemes[0].getName().equals(TS.CONDITIONAL_OPERATOR)) {
             System.err.println("CodeParser >> Expected 'if' but found " + lexemes[0].getName());
         } else {
-            parsed.add(new Lexeme(PC.LBL + lblIdx, lexemes[0].getLine(), getCode(TS.CONDITIONAL_OPERATOR), false));
-            parsed.add(new Lexeme(PC.JNE, lexemes[0].getLine(), spCode, false));
-
+            parsed.add(new Lexeme(PC.LBL + lblIdx, lexemes[0].getLine(), lblCode, false));
+            parsed.add(new Lexeme(PC.JNE, lexemes[0].getLine(), PC.SP_CODE, false));
+            recordLabel(-1);
             // !!! add lbl to label table
 
             stack.pop();
             Lexeme[] nLexemes = new Lexeme[]{lexemes[0],
-                    new Lexeme(PC.LBL + lblIdx++, lexemes[0].getLine(), lexemes[0].getCode(), false)};
+                    new Lexeme(PC.LBL + lblIdx++, lexemes[0].getLine(), lblCode, false)};
             stack.push(nLexemes);
         }
     }
 
     private void handleForStart(Lexeme lexeme) {
         ForData forData = new ForData();
-        forData.pushStart(new Lexeme(PC.LBL + lblIdx + ":", lexeme.getCode(), lblCode, false));
+        forData.pushStart(new Lexeme(PC.LBL + lblIdx + ":", lexeme.getLine(), lblCode, false));
         forDataStack.push(forData);
         Lexeme[] nLexemes = new Lexeme[]{lexeme,
-                new Lexeme(PC.LBL + lblIdx++, lexeme.getLine(), lexeme.getCode(), false)};
+                new Lexeme(PC.LBL + lblIdx++, lexeme.getLine(), lblCode, false)};
         stack.push(nLexemes);
     }
 
@@ -317,12 +327,13 @@ public class CodeParser implements PolizParser {
         underlineFirst = !underlineFirst;
         if (underlineFirst) {
             parsed.addAll(forDataStack.peek().popStart());
+            recordLabel(0);
             Lexeme[] lexemes = stack.peek();    // must be 'for'
             if (unwrap(lexemes).getCode() == getCode(TS.CYCLE_FOR)) {   // what it is?
                 stack.pop();
                 Lexeme[] nLexemes = new Lexeme[]{lexemes[0],
                         lexemes[1],
-                        new Lexeme(PC.LBL + lblIdx, lexemes[0].getLine(), lexemes[0].getCode(), false)};
+                        new Lexeme(PC.LBL + lblIdx, lexemes[0].getLine(), lblCode, false)};
                 stack.push(nLexemes);
             } else {
                 System.err.println("CodeParser >> expected 'for' in stack, after first underline");
@@ -334,7 +345,7 @@ public class CodeParser implements PolizParser {
     }
 
     private void handleInputOutput(Lexeme lexeme) {
-        parsed.add(new Lexeme((ioStream) ? PC.INPUT : PC.OUTPUT, lexeme.getLine(), spCode, false));
+        parsed.add(new Lexeme((ioStream) ? PC.INPUT : PC.OUTPUT, lexeme.getLine(), PC.SP_CODE, false));
         ioStream = null;
     }
 
@@ -344,8 +355,9 @@ public class CodeParser implements PolizParser {
             forDataStack.peek().pushEndIter(lexeme);
         } else {
             // here is a CLOSING_SQUARE_BRACE
-            parsed.add(new Lexeme(PC.LBL + lblIdx++, lexeme.getLine(), getCode(TS.CYCLE_FOR), false));
-            parsed.add(new Lexeme(PC.JNE, lexeme.getLine(), spCode, false));
+            parsed.add(new Lexeme(PC.LBL + lblIdx++, lexeme.getLine(), lblCode, false));
+            parsed.add(new Lexeme(PC.JNE, lexeme.getLine(), PC.SP_CODE, false));
+            recordLabel(-1);
             forUL2Filter = false;
         }
     }
@@ -354,9 +366,28 @@ public class CodeParser implements PolizParser {
         this.lblIdx = this.lexer.getLabels().size() + 1;
     }
 
+    private void recordLabel(int d) {
+        int index = parsed.size() - 1 + d;
+        Lexeme lexeme = parsed.get(index);
+        Label label;
+        if (lexeme.getName().contains(String.valueOf(CharacterConstants.colon))) {
+            label = new Label(lexeme.getName(), index + 1);       // transition to first lexeme after label jump
+        } else label = new Label(index - 1, lexeme.getName());    // transition from last lexeme before label call
+        this.labels.add(label);
+    }
+
+    public List<Lexeme> getResult() {
+        return this.parsed;
+    }
+
+    public List<Label> getLabels() {
+        return labels;
+    }
+
     public void clear() {
         this.parsed.clear();
         this.stack.clear();
+        this.labels.clear();
         this.forDataStack.clear();
     }
 }

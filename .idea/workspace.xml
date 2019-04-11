@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="added poliz for declarations&#10;added poliz for labels">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="added run pane in UI">
+      <change afterPath="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/memory/Label.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/memory/ProgramMemory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/memory/Variable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/performer/Performer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/performer/exceptions/RuntimeException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Translator/kpi/skarlet/cad/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Translator/kpi/skarlet/cad/controller/Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Translator/kpi/skarlet/cad/forwarding/analyser/FTAnalyser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Translator/kpi/skarlet/cad/forwarding/analyser/FTAnalyser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Translator/kpi/skarlet/cad/poliz/ArithmeticExpressionParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Translator/kpi/skarlet/cad/poliz/ArithmeticExpressionParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Translator/kpi/skarlet/cad/poliz/PParser.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/kpi/skarlet/cad/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kpi/skarlet/cad/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kpi/skarlet/cad/lexer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/kpi/skarlet/cad/lexer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/ArithmeticExpressionParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/ArithmeticExpressionParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/analyser/FTAnalyser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/analyser/FTAnalyser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/lexemes/Lexeme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/lexemes/Lexeme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/CodeParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/CodeParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/constants/PolizConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/constants/PolizConstants.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -72,7 +79,7 @@
     <session id="523153714">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="30" />
+          <entry key="project.closed" value="35" />
           <entry key="project.open.time.110" value="1" />
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.18" value="2" />
@@ -84,31 +91,35 @@
           <entry key="project.open.time.23" value="2" />
           <entry key="project.open.time.24" value="3" />
           <entry key="project.open.time.25" value="1" />
+          <entry key="project.open.time.28" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.open.time.30" value="2" />
+          <entry key="project.open.time.30" value="3" />
           <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.36" value="1" />
           <entry key="project.open.time.39" value="1" />
           <entry key="project.open.time.43" value="2" />
           <entry key="project.open.time.61" value="1" />
+          <entry key="project.open.time.64" value="1" />
+          <entry key="project.open.time.65" value="1" />
           <entry key="project.open.time.68" value="1" />
-          <entry key="project.open.time.76" value="1" />
+          <entry key="project.open.time.76" value="2" />
           <entry key="project.open.time.78" value="1" />
-          <entry key="project.opened" value="32" />
+          <entry key="project.opened" value="37" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="dummy" value="11" />
           <entry key="fxml" value="68" />
-          <entry key="java" value="10596" />
-          <entry key="txt" value="224" />
+          <entry key="java" value="13783" />
+          <entry key="txt" value="238" />
           <entry key="xml" value="103" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="10596" />
-          <entry key="PLAIN_TEXT" value="224" />
+          <entry key="JAVA" value="13783" />
+          <entry key="PLAIN_TEXT" value="249" />
           <entry key="XML" value="171" />
         </counts>
       </usages-collector>
@@ -117,7 +128,7 @@
           <entry key="css" value="1" />
           <entry key="fxml" value="5" />
           <entry key="html" value="2" />
-          <entry key="java" value="206" />
+          <entry key="java" value="236" />
           <entry key="txt" value="22" />
           <entry key="xml" value="10" />
         </counts>
@@ -126,7 +137,7 @@
         <counts>
           <entry key="CSS" value="1" />
           <entry key="HTML" value="2" />
-          <entry key="JAVA" value="206" />
+          <entry key="JAVA" value="236" />
           <entry key="PLAIN_TEXT" value="22" />
           <entry key="XML" value="15" />
         </counts>
@@ -138,11 +149,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/program.txt">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/CodeParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+            <state relative-caret-position="196">
+              <caret line="154" column="45" selection-start-line="154" selection-start-column="45" selection-end-line="154" selection-end-column="45" />
+              <folding>
+                <element signature="method#CodeParser#0;class#CodeParser#0" />
+                <element signature="method#main#0;class#CodeParser#0" />
+                <element signature="method#releaseRecollection#0;class#CodeParser#0" />
+                <element signature="method#add#0;class#CodeParser#0" />
+                <element signature="method#isOpeningBracket#0;class#CodeParser#0" />
+                <element signature="method#isClosingBracket#0;class#CodeParser#0" />
+                <element signature="method#getPriority#0;class#CodeParser#0" />
+                <element signature="method#getStackCopyAsWords#0;class#CodeParser#0" />
+                <element signature="method#unwrap#0;class#CodeParser#0" />
+                <element signature="method#handleOpBlock#0;class#CodeParser#0" />
+                <element signature="method#handleIfThen#0;class#CodeParser#0" />
+                <element signature="method#handleForStart#0;class#CodeParser#0" />
+                <element signature="method#handleCycleSeparator#0;class#CodeParser#0" />
+                <element signature="method#handleInputOutput#0;class#CodeParser#0" />
+                <element signature="method#filtrationCycleAfterUL2#0;class#CodeParser#0" />
+                <element signature="method#clear#0;class#CodeParser#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/constants/PolizConstants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="11" column="100" selection-start-line="11" selection-start-column="100" selection-end-line="11" selection-end-column="100" />
             </state>
           </provider>
         </entry>
@@ -150,11 +188,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/analyser/FTAnalyser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1909">
-              <caret line="177" column="36" selection-start-line="177" selection-start-column="36" selection-end-line="177" selection-end-column="36" />
+            <state relative-caret-position="966">
+              <caret line="199" column="5" selection-start-line="199" selection-start-column="5" selection-end-line="199" selection-end-column="5" />
               <folding>
-                <element signature="class#2413:2512" />
-                <element signature="initializer##0;class#2413:2512" />
+                <element signature="method#main#0;class#FTAnalyser#0" />
+                <element signature="method#FTAnalyser#0;class#FTAnalyser#0" />
+                <element signature="method#FTAnalyser#1;class#FTAnalyser#0" />
+                <element signature="method#analyse#0;class#FTAnalyser#0" />
+                <element signature="class#2349:2448" />
+                <element signature="initializer##0;class#2349:2448" />
                 <element signature="method#calculateRatio#0;class#FTAnalyser#0" />
                 <element signature="method#processRatio#0;class#FTAnalyser#0" />
                 <element signature="method#findLastLessSign#0;class#FTAnalyser#0" />
@@ -169,108 +211,17 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/ArithmeticExpressionParser.java">
+        <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/performer/Performer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="352" selection-start-line="352" selection-end-line="352" />
+            <state relative-caret-position="64">
+              <caret line="42" column="20" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
               <folding>
-                <element signature="method#ArithmeticExpressionParser#0;class#ArithmeticExpressionParser#0" />
-                <element signature="method#main#0;class#ArithmeticExpressionParser#0" />
-                <element signature="method#parse#0;class#ArithmeticExpressionParser#0" />
-                <element signature="method#releaseRecollection#0;class#ArithmeticExpressionParser#0" />
-                <element signature="method#add#0;class#ArithmeticExpressionParser#0" />
-                <element signature="method#isOpeningBracket#0;class#ArithmeticExpressionParser#0" />
-                <element signature="method#isClosingBracket#0;class#ArithmeticExpressionParser#0" />
-                <element signature="method#getPriority#0;class#ArithmeticExpressionParser#0" />
-                <element signature="method#getStackCopyAsWords#0;class#ArithmeticExpressionParser#0" />
-                <element signature="method#unwrap#0;class#ArithmeticExpressionParser#0" />
-                <element signature="method#handleOpBlock#0;class#ArithmeticExpressionParser#0" />
-                <element signature="method#handleIfThen#0;class#ArithmeticExpressionParser#0" />
-                <element signature="method#handleForStart#0;class#ArithmeticExpressionParser#0" />
-                <element signature="method#handleCycleSeparator#0;class#ArithmeticExpressionParser#0" />
-                <element signature="method#handleInputOutput#0;class#ArithmeticExpressionParser#0" />
-                <element signature="method#filtrationCycleAfterUL2#0;class#ArithmeticExpressionParser#0" />
-                <element signature="method#clear#0;class#ArithmeticExpressionParser#0" />
+                <element signature="imports" expanded="true" />
+                <element signature="method#clear#0;class#Performer#0" />
+                <element signature="method#mergeLabels#0;class#Performer#0" />
+                <element signature="method#setLabelsSpCode#0;class#Performer#0" />
+                <element signature="method#findFirstTypeIndex#0;class#Performer#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/constants/PolizConstants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/lexemes/Label.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="943">
-              <caret line="58" column="24" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/analyser/TableElem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
-              <folding>
-                <element signature="e#1899#1900#0" expanded="true" />
-                <element signature="e#1933#1934#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/constants/InitKeywords.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1127">
-              <caret line="49" column="23" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/controller/Controller.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="326" column="78" lean-forward="true" selection-start-line="326" selection-start-column="78" selection-end-line="326" selection-end-column="78" />
-              <folding>
-                <element signature="e#4120#4283#0" />
-                <element signature="e#4289#4447#0" />
-                <element signature="e#4453#5788#0" />
-                <element signature="e#5794#6269#0" />
-                <element signature="e#6275#6457#0" />
-                <element signature="e#6463#6725#0" />
-                <element signature="e#6731#7189#0" />
-                <element signature="e#7195#7861#0" />
-                <element signature="e#7937#8106#0" />
-                <element signature="e#8112#8256#0" />
-                <element signature="e#8262#8460#0" />
-                <element signature="e#8466#8662#0" />
-                <element signature="e#8668#8818#0" />
-                <element signature="e#8824#9813#0" />
-                <element signature="e#9819#10217#0" />
-                <element signature="e#10223#10727#0" />
-                <element signature="e#10733#11195#0" />
-                <element signature="e#11201#11510#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="37" column="98" selection-start-line="37" selection-start-column="98" selection-end-line="37" selection-end-column="98" />
             </state>
           </provider>
         </entry>
@@ -280,8 +231,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -294,9 +245,16 @@
       <find>&quot;m&quot;</find>
       <find>COND</find>
       <find>:</find>
-      <find>lblIdx</find>
       <find>PC.JMP</find>
       <find>SEMIC</find>
+      <find>getK</find>
+      <find>lblIdx</find>
+      <find>PC.LBL</find>
+      <find>lblCode</find>
+      <find>parsed.add</find>
+      <find>OUT</find>
+      <find>PC.OUTPUT</find>
+      <find>JMP</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -311,10 +269,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/sample/Controller.java" />
-        <option value="$PROJECT_DIR$/src/sample/Main.java" />
-        <option value="$PROJECT_DIR$/src/sample/lexer.fxml" />
-        <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/analyser/Sharp.java" />
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/lexemes/Identifier.java" />
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/lexemes/Label.java" />
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/lexemes/Constant.java" />
@@ -328,7 +282,6 @@
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/exceptions/AttributeNotFoundException.java" />
         <option value="$PROJECT_DIR$/res/program.txt" />
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/analyser/TableStructure.java" />
-        <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/lexemes/Lexeme.java" />
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/grammar/Rule.java" />
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/grammar/RightSide.java" />
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/grammar/Word.java" />
@@ -352,11 +305,21 @@
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/FTCreator.java" />
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/constants/InitKeywords.java" />
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/analyser/TableElem.java" />
-        <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/analyser/FTAnalyser.java" />
-        <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/constants/PolizConstants.java" />
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/ArithmeticExpressionParser.java" />
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/lexer.fxml" />
+        <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/entity/ProgramMemoy.java" />
+        <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/memory/Variable.java" />
+        <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/memory/ProgramMemoy.java" />
+        <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/memory/ProgramMemory.java" />
+        <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/Performer.java" />
+        <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/performer/exceptions/RuntimeException.java" />
+        <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/constants/PolizConstants.java" />
+        <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/memory/Label.java" />
+        <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/analyser/FTAnalyser.java" />
         <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/controller/Controller.java" />
+        <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/lexemes/Lexeme.java" />
+        <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/performer/Performer.java" />
+        <option value="$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/CodeParser.java" />
       </list>
     </option>
   </component>
@@ -368,8 +331,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="359" />
-    <option name="y" value="145" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="716" />
     <option name="height" value="531" />
   </component>
@@ -382,6 +345,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -417,22 +381,7 @@
               <item name="Translator" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="cad" type="462c0819:PsiDirectoryNode" />
-              <item name="forwarding" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Translator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Translator" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="cad" type="462c0819:PsiDirectoryNode" />
               <item name="lexer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Translator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Translator" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="cad" type="462c0819:PsiDirectoryNode" />
-              <item name="lexer" type="462c0819:PsiDirectoryNode" />
-              <item name="constants" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Translator" type="b2602c69:ProjectViewProjectNode" />
@@ -457,12 +406,19 @@
               <item name="poliz" type="462c0819:PsiDirectoryNode" />
               <item name="constants" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Translator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Translator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="cad" type="462c0819:PsiDirectoryNode" />
+              <item name="poliz" type="462c0819:PsiDirectoryNode" />
+              <item name="memory" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -475,10 +431,10 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554732473455" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554842153342" />
     <property name="dynamic.classpath" value="false" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../testProject" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -704,7 +660,12 @@
       <workItem from="1554641439763" duration="1240000" />
       <workItem from="1554715688516" duration="2579000" />
       <workItem from="1554726639915" duration="5034000" />
-      <workItem from="1554736266264" duration="289000" />
+      <workItem from="1554736266264" duration="573000" />
+      <workItem from="1554758553138" duration="612000" />
+      <workItem from="1554788019973" duration="405000" />
+      <workItem from="1554827543732" duration="12383000" />
+      <workItem from="1554884383473" duration="1911000" />
+      <workItem from="1554975575002" duration="1819000" />
     </task>
     <task id="LOCAL-00001" summary="extend ArithmeticExpressionParser">
       <created>1553507339392</created>
@@ -734,11 +695,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554731173518</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added run pane in UI">
+      <created>1554736815964</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1554736815964</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107996000" />
+    <option name="totallyTimeSpent" value="125410000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -748,7 +716,7 @@
       <window_info id="Capture Tool" order="1" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="4" sideWeight="0.6703755" visible="true" weight="0.22583081" />
+      <window_info content_ui="combo" id="Project" order="4" sideWeight="0.6703755" visible="true" weight="0.24093656" />
       <window_info id="Structure" order="5" weight="0.25" />
       <window_info id="Favorites" order="6" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32888147" />
@@ -821,7 +789,8 @@
     <MESSAGE value="included ArithmeticExpressionParser into Syntax Analyser" />
     <MESSAGE value="added poliz for cycle and conditional operator&#10;added a new tab to interface (poliz only)" />
     <MESSAGE value="added poliz for declarations&#10;added poliz for labels" />
-    <option name="LAST_COMMIT_MESSAGE" value="added poliz for declarations&#10;added poliz for labels" />
+    <MESSAGE value="added run pane in UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="added run pane in UI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -832,11 +801,17 @@
           <properties />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/performer/Performer.java</url>
+          <line>103</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="(lexer.getLabels().indexOf(lexeme)" language="JAVA" />
+        <watch expression="stack" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
@@ -847,104 +822,58 @@
   <component name="debuggerHistoryManager">
     <expressions id="watch">
       <expression>
-        <expression-string>(lexer.getLabels().indexOf(lexeme)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>lexCode</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>stack.peek().getCode()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>Identifier.get(idn).getType()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>parsed</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
         <expression-string>stack</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>TableElem.getParseTable()</expression-string>
+        <expression-string>memory.getLabels().get(stack.peek().getSpCodeLbl()).getToIdx()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>TableElem</expression-string>
+        <expression-string>memory.getLabels().get(stack.peek().getSpCodeLbl())</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>memory.getLabels().get(stack.pop().getSpCodeLbl())</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>memory.getLabels().get(stack.pop().getSpCodeLbl()).getToIdx()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>memory.getLabels().get(stack.pop().getSpCodeLbl()).getToIdx();</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>stack.pop().getSpCodeLbl()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>100 == getCode(TS.LABEL)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>getCode(TS.LABEL)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>(lexer.getLabels().indexOf(lexeme)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/util/Collection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="658" selection-start-line="658" selection-end-line="658" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/lexemes/Identifier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/table_style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/table.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="66" lean-forward="true" selection-start-line="3" selection-start-column="66" selection-end-line="3" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="13" column="44" lean-forward="true" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/constants/PolizWordType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/entity/PolizTableElem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="28" column="68" lean-forward="true" selection-start-line="28" selection-start-column="68" selection-end-line="28" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/entity/PolizWord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/util/List.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
@@ -952,24 +881,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/PolizCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/jdk/internal/reflect/NativeMethodAccessorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
           <caret line="61" selection-start-line="61" selection-end-line="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/jdk/internal/reflect/DelegatingMethodAccessorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
         </state>
       </provider>
     </entry>
@@ -984,13 +899,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
           <caret line="274" selection-start-line="274" selection-end-line="274" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/javafx.fxml/javafx/fxml/FXMLLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="1669" selection-start-line="1669" selection-end-line="1669" />
         </state>
       </provider>
     </entry>
@@ -1018,13 +926,6 @@
     <entry file="file://$PROJECT_DIR$/res/semantic_subroutine.txt" />
     <entry file="file://$PROJECT_DIR$/res/semantic_subroutine.xml" />
     <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/SSReader.java" />
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/PParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/grammar_3.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
@@ -1109,17 +1010,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/LexicalAnalyser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5635">
-          <caret line="273" column="19" selection-start-line="273" selection-start-column="19" selection-end-line="273" selection-end-column="19" />
-          <folding>
-            <element signature="e#10256#10257#0" expanded="true" />
-            <element signature="e#10280#10281#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/analyser/TableStructure.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
@@ -1155,13 +1045,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/lexemes/Lexeme.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/lexemes/LexemeType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
@@ -1173,39 +1056,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/analyser/FTAnalyser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1909">
-          <caret line="177" column="36" selection-start-line="177" selection-start-column="36" selection-end-line="177" selection-end-column="36" />
-          <folding>
-            <element signature="class#2413:2512" />
-            <element signature="initializer##0;class#2413:2512" />
-            <element signature="method#calculateRatio#0;class#FTAnalyser#0" />
-            <element signature="method#processRatio#0;class#FTAnalyser#0" />
-            <element signature="method#findLastLessSign#0;class#FTAnalyser#0" />
-            <element signature="method#findRightSide#0;class#FTAnalyser#0" />
-            <element signature="method#findRule#0;class#FTAnalyser#0" />
-            <element signature="method#createReverseRulesMap#0;class#FTAnalyser#0" />
-            <element signature="method#replaceByRule#0;class#FTAnalyser#0" />
-            <element signature="method#clear#0;class#FTAnalyser#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/constants/PolizConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/lexemes/Label.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="943">
-          <caret line="58" column="24" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -1227,63 +1077,235 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/ArithmeticExpressionParser.java">
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="352" selection-start-line="352" selection-end-line="352" />
+        <state relative-caret-position="851">
+          <caret line="37" column="98" selection-start-line="37" selection-start-column="98" selection-end-line="37" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/lexemes/Identifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="12" column="30" lean-forward="true" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/VariableType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/lexemes/Label.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="943">
+          <caret line="58" column="24" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/constants/PolizWordType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/PolizCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="12" column="39" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/LexicalAnalyser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="492" column="33" lean-forward="true" selection-start-line="492" selection-start-column="15" selection-end-line="492" selection-end-column="33" />
           <folding>
-            <element signature="method#ArithmeticExpressionParser#0;class#ArithmeticExpressionParser#0" />
-            <element signature="method#main#0;class#ArithmeticExpressionParser#0" />
-            <element signature="method#parse#0;class#ArithmeticExpressionParser#0" />
-            <element signature="method#releaseRecollection#0;class#ArithmeticExpressionParser#0" />
-            <element signature="method#add#0;class#ArithmeticExpressionParser#0" />
-            <element signature="method#isOpeningBracket#0;class#ArithmeticExpressionParser#0" />
-            <element signature="method#isClosingBracket#0;class#ArithmeticExpressionParser#0" />
-            <element signature="method#getPriority#0;class#ArithmeticExpressionParser#0" />
-            <element signature="method#getStackCopyAsWords#0;class#ArithmeticExpressionParser#0" />
-            <element signature="method#unwrap#0;class#ArithmeticExpressionParser#0" />
-            <element signature="method#handleOpBlock#0;class#ArithmeticExpressionParser#0" />
-            <element signature="method#handleIfThen#0;class#ArithmeticExpressionParser#0" />
-            <element signature="method#handleForStart#0;class#ArithmeticExpressionParser#0" />
-            <element signature="method#handleCycleSeparator#0;class#ArithmeticExpressionParser#0" />
-            <element signature="method#handleInputOutput#0;class#ArithmeticExpressionParser#0" />
-            <element signature="method#filtrationCycleAfterUL2#0;class#ArithmeticExpressionParser#0" />
-            <element signature="method#clear#0;class#ArithmeticExpressionParser#0" />
+            <element signature="e#1765#2038#0" />
+            <element signature="e#2044#2725#0" />
+            <element signature="e#2223#2234#0" />
+            <element signature="e#2731#3102#0" />
+            <element signature="e#3108#3552#0" />
+            <element signature="e#3948#4471#0" />
+            <element signature="e#4477#5008#0" />
+            <element signature="e#4875#4914#0" />
+            <element signature="e#5014#6402#0" />
+            <element signature="e#6408#7122#0" />
+            <element signature="e#7128#7517#0" />
+            <element signature="e#7523#7782#0" />
+            <element signature="e#7788#7997#0" />
+            <element signature="e#8003#8257#0" />
+            <element signature="e#8263#8656#0" />
+            <element signature="e#8536#8614#0" />
+            <element signature="e#8662#9005#0" />
+            <element signature="e#9011#9358#0" />
+            <element signature="e#9364#9678#0" />
+            <element signature="e#9684#9801#0" />
+            <element signature="e#9807#10093#0" />
+            <element signature="e#10099#10226#0" />
+            <element signature="e#10287#12443#0" />
+            <element signature="e#12449#12619#0" />
+            <element signature="e#12625#12813#0" />
+            <element signature="e#12819#13021#0" />
+            <element signature="e#13275#13435#0" />
+            <element signature="e#13441#13688#0" />
+            <element signature="e#13965#14585#0" />
+            <element signature="e#14359#14469#0" />
+            <element signature="e#14591#15311#0" />
+            <element signature="e#15464#15465#0" expanded="true" />
+            <element signature="e#15505#15506#0" expanded="true" />
+            <element signature="e#15592#15914#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/performer/exceptions/RuntimeException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="37" column="98" selection-start-line="37" selection-start-column="98" selection-end-line="37" selection-end-column="98" />
+        <state relative-caret-position="46">
+          <caret line="2" column="66" lean-forward="true" selection-start-line="2" selection-start-column="66" selection-end-line="2" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/PolizParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/memory/Label.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/jdk/internal/reflect/DelegatingMethodAccessorImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/constants/PolizConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="100" selection-start-line="11" selection-start-column="100" selection-end-line="11" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/forwarding/analyser/FTAnalyser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="966">
+          <caret line="199" column="5" selection-start-line="199" selection-start-column="5" selection-end-line="199" selection-end-column="5" />
+          <folding>
+            <element signature="method#main#0;class#FTAnalyser#0" />
+            <element signature="method#FTAnalyser#0;class#FTAnalyser#0" />
+            <element signature="method#FTAnalyser#1;class#FTAnalyser#0" />
+            <element signature="method#analyse#0;class#FTAnalyser#0" />
+            <element signature="class#2349:2448" />
+            <element signature="initializer##0;class#2349:2448" />
+            <element signature="method#calculateRatio#0;class#FTAnalyser#0" />
+            <element signature="method#processRatio#0;class#FTAnalyser#0" />
+            <element signature="method#findLastLessSign#0;class#FTAnalyser#0" />
+            <element signature="method#findRightSide#0;class#FTAnalyser#0" />
+            <element signature="method#findRule#0;class#FTAnalyser#0" />
+            <element signature="method#createReverseRulesMap#0;class#FTAnalyser#0" />
+            <element signature="method#replaceByRule#0;class#FTAnalyser#0" />
+            <element signature="method#clear#0;class#FTAnalyser#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/javafx.fxml/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="1785" selection-start-line="1785" selection-end-line="1785" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="326" column="78" lean-forward="true" selection-start-line="326" selection-start-column="78" selection-end-line="326" selection-end-column="78" />
+        <state relative-caret-position="215">
+          <caret line="307" selection-start-line="307" selection-end-line="307" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/memory/Variable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/memory/ProgramMemory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="21" column="42" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
           <folding>
-            <element signature="e#4120#4283#0" />
-            <element signature="e#4289#4447#0" />
-            <element signature="e#4453#5788#0" />
-            <element signature="e#5794#6269#0" />
-            <element signature="e#6275#6457#0" />
-            <element signature="e#6463#6725#0" />
-            <element signature="e#6731#7189#0" />
-            <element signature="e#7195#7861#0" />
-            <element signature="e#7937#8106#0" />
-            <element signature="e#8112#8256#0" />
-            <element signature="e#8262#8460#0" />
-            <element signature="e#8466#8662#0" />
-            <element signature="e#8668#8818#0" />
-            <element signature="e#8824#9813#0" />
-            <element signature="e#9819#10217#0" />
-            <element signature="e#10223#10727#0" />
-            <element signature="e#10733#11195#0" />
-            <element signature="e#11201#11510#0" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#525#526#0" expanded="true" />
+            <element signature="e#563#564#0" expanded="true" />
+            <element signature="e#592#593#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/lexer/lexemes/Lexeme.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="122" column="29" selection-start-line="122" selection-start-column="29" selection-end-line="122" selection-end-column="29" />
+          <folding>
+            <element signature="method#Lexeme#0;class#Lexeme#0" />
+            <element signature="method#Lexeme#1;class#Lexeme#0" />
+            <element signature="method#Lexeme#2;class#Lexeme#0" />
+            <element signature="docComment;method#get#0;class#Lexeme#0" />
+            <element signature="method#get#0;class#Lexeme#0" />
+            <element signature="method#getLastCode#0;class#Lexeme#0" />
+            <element signature="method#printTable#0;class#Lexeme#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/performer/Performer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="42" column="20" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#clear#0;class#Performer#0" />
+            <element signature="method#mergeLabels#0;class#Performer#0" />
+            <element signature="method#setLabelsSpCode#0;class#Performer#0" />
+            <element signature="method#findFirstTypeIndex#0;class#Performer#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kpi/skarlet/cad/poliz/CodeParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="154" column="45" selection-start-line="154" selection-start-column="45" selection-end-line="154" selection-end-column="45" />
+          <folding>
+            <element signature="method#CodeParser#0;class#CodeParser#0" />
+            <element signature="method#main#0;class#CodeParser#0" />
+            <element signature="method#releaseRecollection#0;class#CodeParser#0" />
+            <element signature="method#add#0;class#CodeParser#0" />
+            <element signature="method#isOpeningBracket#0;class#CodeParser#0" />
+            <element signature="method#isClosingBracket#0;class#CodeParser#0" />
+            <element signature="method#getPriority#0;class#CodeParser#0" />
+            <element signature="method#getStackCopyAsWords#0;class#CodeParser#0" />
+            <element signature="method#unwrap#0;class#CodeParser#0" />
+            <element signature="method#handleOpBlock#0;class#CodeParser#0" />
+            <element signature="method#handleIfThen#0;class#CodeParser#0" />
+            <element signature="method#handleForStart#0;class#CodeParser#0" />
+            <element signature="method#handleCycleSeparator#0;class#CodeParser#0" />
+            <element signature="method#handleInputOutput#0;class#CodeParser#0" />
+            <element signature="method#filtrationCycleAfterUL2#0;class#CodeParser#0" />
+            <element signature="method#clear#0;class#CodeParser#0" />
           </folding>
         </state>
       </provider>
