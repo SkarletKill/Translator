@@ -305,9 +305,9 @@ public class Controller {
         if (lexer.getExceptions().isEmpty()) {
             analyser.clear();
             analyser.analyse();
-            codePerformer.perform(analyser.getBuilder());
             onParseTableShowClick();
             fillParsedTable();
+            codePerformer.perform(this, analyser.getBuilder());
             synzerPass = true;
         } else {
             synzerPass = false;
@@ -350,6 +350,13 @@ public class Controller {
         }
 
         return "error";
+    }
+
+    public void appendOutput(String string) {
+        StringBuilder builder = new StringBuilder(rtOutputArea.getText());
+        builder.append(string);
+        rtOutputArea.setText(builder.toString());
+        rtbOutputArea.setText(builder.toString());
     }
 
 }

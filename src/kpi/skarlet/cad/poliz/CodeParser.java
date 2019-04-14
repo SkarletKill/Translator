@@ -1,6 +1,5 @@
 package kpi.skarlet.cad.poliz;
 
-import kpi.skarlet.cad.forwarding.analyser.TableElem;
 import kpi.skarlet.cad.forwarding.constants.WordType;
 import kpi.skarlet.cad.forwarding.grammar.Word;
 import kpi.skarlet.cad.lexer.LexicalAnalyser;
@@ -25,6 +24,7 @@ public class CodeParser implements PolizParser {
     private Stack<Lexeme[]> stack;
     private List<Label> labels;
     private Stack<ForData> forDataStack;    // structure for remember parts of 'for' cycle to using ones after
+    private boolean cycleParameter = false; // next identifier is cycle parameter
     private boolean underlineFirst = false; // underline as separator in 'for' cycle
     private boolean forUL2Filter = false;   // filter after second underline in 'for' (using for move incrementation to end of operator block)
     private Lexeme type = null;             // filter after type (using for doing specific act)
@@ -40,7 +40,6 @@ public class CodeParser implements PolizParser {
         this.stack = new Stack<>();
         this.labels = new ArrayList<>();
         this.forDataStack = new Stack<>();
-        TableElem.clear();
     }
 
     public static void main(String[] args) {
@@ -69,6 +68,9 @@ public class CodeParser implements PolizParser {
 
                 if (lexCode == getCode(TS.IDENTIFIER) || lexCode == getCode(TS.CONSTANT)) {
                     parsed.add(lexeme);
+                    handleForParameter(lexeme);
+                    if (ioStream != null)
+                        handleInputOutput(lexeme);
                     outputChanged = true;
                 } else if (lexPriority == 99) {
                     // it's a keyword
@@ -100,7 +102,7 @@ public class CodeParser implements PolizParser {
                     } else if (lexCode == getCode(TS.OUTPUT_JOINT)) {
 
                     } else if (lexCode == getCode(TS.END)) {
-                        if (ioStream != null) handleInputOutput(lexeme);    // end - end of cin/cout
+                        if (ioStream != null) ioStream = null;    // end - end of cin/cout
                         if (unwrap(stack.peek()).getCode() == getCode(TS.CONDITIONAL_OPERATOR)) {
                             Lexeme[] condFull = stack.pop();
                             parsed.add(new Lexeme(condFull[1].getName() + TS.COLON, condFull[0].getLine(), lblCode, false));
@@ -144,8 +146,9 @@ public class CodeParser implements PolizParser {
                         handleCycleSeparator();     // handle underline
                     } else {
                         if (lexCode == getCode(TS.SEMICOLON)) {     // semicolon - end for
-                            if (ioStream != null) handleInputOutput(lexeme);    // semicolon - end of cin/cout
+                            if (ioStream != null) ioStream = null;    // semicolon - end of cin/cout
                             else if (unwrap(stack.peek()).getCode() == getCode(TS.CYCLE_FOR)) {
+                                parsed.addAll(forDataStack.peek().getEndIter());
                                 Lexeme[] stackFor = stack.pop();
                                 parsed.add(stackFor[1]);
                                 recordLabel(0);
@@ -170,7 +173,7 @@ public class CodeParser implements PolizParser {
 //        releaseRecollection();
     }
 
-    private void releaseRecollection() {
+    public void releaseRecollection() {
         while (!stack.empty()) {
             Lexeme lexeme = unwrap(stack.pop());
             if (lexeme.getName().equals(TS.OPENING_BRACKET)) continue;
@@ -315,17 +318,26 @@ public class CodeParser implements PolizParser {
     }
 
     private void handleForStart(Lexeme lexeme) {
-        ForData forData = new ForData();
+        ForData forData = new ForData(lexer);
         forData.pushStart(new Lexeme(PC.LBL + lblIdx + ":", lexeme.getLine(), lblCode, false));
         forDataStack.push(forData);
         Lexeme[] nLexemes = new Lexeme[]{lexeme,
                 new Lexeme(PC.LBL + lblIdx++, lexeme.getLine(), lblCode, false)};
         stack.push(nLexemes);
+        this.cycleParameter = true;
+    }
+
+    private void handleForParameter(Lexeme lexeme) {
+        if (cycleParameter && lexeme.getCode() == getCode(TS.IDENTIFIER)) {
+            forDataStack.peek().setParameter(lexeme);
+            cycleParameter = false;
+        }
     }
 
     private void handleCycleSeparator() {
         underlineFirst = !underlineFirst;
         if (underlineFirst) {
+            cycleParameter = false;
             parsed.addAll(forDataStack.peek().popStart());
             recordLabel(0);
             Lexeme[] lexemes = stack.peek();    // must be 'for'
@@ -346,7 +358,6 @@ public class CodeParser implements PolizParser {
 
     private void handleInputOutput(Lexeme lexeme) {
         parsed.add(new Lexeme((ioStream) ? PC.INPUT : PC.OUTPUT, lexeme.getLine(), PC.SP_CODE, false));
-        ioStream = null;
     }
 
     private void filtrationCycleAfterUL2(Lexeme lexeme) {
@@ -371,7 +382,7 @@ public class CodeParser implements PolizParser {
         Lexeme lexeme = parsed.get(index);
         Label label;
         if (lexeme.getName().contains(String.valueOf(CharacterConstants.colon))) {
-            label = new Label(lexeme.getName(), index + 1);       // transition to first lexeme after label jump
+            label = new Label(lexeme.getName(), index);       // transition to first lexeme after label jump
         } else label = new Label(index - 1, lexeme.getName());    // transition from last lexeme before label call
         this.labels.add(label);
     }

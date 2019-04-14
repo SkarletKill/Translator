@@ -33,6 +33,11 @@ public class Lexeme {
         spCode = additionCode;
     }
 
+    public Lexeme(String lex, int line, int code, int additionCode, boolean addition) {
+        this(lex, line, code, addition);
+        spCode = additionCode;
+    }
+
     public Integer getSpCode() {
         return spCode;
     }

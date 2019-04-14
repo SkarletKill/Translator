@@ -2,22 +2,13 @@ package kpi.skarlet.cad.poliz.memory;
 
 import kpi.skarlet.cad.lexer.VariableType;
 
-public class Variable {
-    private String name;
+public class Constant {
     private VariableType type;
     private Float value;
 
-    public Variable(String name, VariableType type) {
-        this.name = name;
+    public Constant(float value, VariableType type) {
+        this.value = value;
         this.type = type;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public VariableType getType() {
@@ -29,7 +20,6 @@ public class Variable {
     }
 
     public Float getValue() {
-        if (value == null) return null;
         return (type.equals(VariableType.FLOAT)) ? value : (float) value.intValue();
     }
 

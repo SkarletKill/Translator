@@ -1,17 +1,26 @@
 package kpi.skarlet.cad.poliz.entity;
 
+import kpi.skarlet.cad.lexer.LexicalAnalyser;
 import kpi.skarlet.cad.lexer.lexemes.Lexeme;
+import kpi.skarlet.cad.poliz.CodeParser;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ForData {
+    private LexicalAnalyser lexer;
+    private Lexeme parameter;
     private List<Lexeme> start;
     private List<Lexeme> endIter;
 
-    public ForData() {
+    public ForData(LexicalAnalyser lexer) {
+        this.lexer = lexer;
         this.start = new ArrayList<>();
         this.endIter = new ArrayList<>();
+    }
+
+    public Lexeme getParameter() {
+        return parameter;
     }
 
     public List<Lexeme> getStart() {
@@ -19,7 +28,12 @@ public class ForData {
     }
 
     public List<Lexeme> getEndIter() {
+        parseEndIter();
         return endIter;
+    }
+
+    public void setParameter(Lexeme parameter) {
+        this.parameter = new Lexeme(parameter.getName(), parameter.getLine(), parameter.getCode(), parameter.getSpCode(), false);
     }
 
     public void setStart(List<Lexeme> start) {
@@ -47,7 +61,20 @@ public class ForData {
     }
 
     public void pushEndIter(Lexeme endIter) {
+        if (this.parameter != null) {
+            this.endIter.add(parameter);
+            this.parameter = null;
+            // code of '=' => 14
+            this.endIter.add(new Lexeme("=", endIter.getLine(), 14, false));
+        }
         this.endIter.add(endIter);
+    }
+
+    private void parseEndIter() {
+        CodeParser parser = new CodeParser(this.lexer);
+        parser.parse(this.endIter);
+        parser.releaseRecollection();
+        this.endIter = parser.getResult();
     }
 
     public boolean isEmpty() {
