@@ -60,6 +60,8 @@ public class CodeParser implements PolizParser {
 
         for (int i = 0; i < expression.size(); i++) {
             Lexeme lexeme = expression.get(i);
+            if(lexeme.getName().equals("}"))
+                System.out.println();
             if (forUL2Filter) {
                 filtrationCycleAfterUL2(lexeme);
             } else {
@@ -109,9 +111,9 @@ public class CodeParser implements PolizParser {
                             recordLabel(0);
                             i++; // skip next semicolon
                         } else {
-                            parsed.add(unwrap(stack.pop()));
-                            outputChanged = true;
-                            i--;
+//                            parsed.add(unwrap(stack.pop()));
+//                            outputChanged = true;
+//                            i--;
                         }
                     } else {
                         // default scenario
@@ -278,6 +280,7 @@ public class CodeParser implements PolizParser {
     // return needed change of iterator
     private int handleOpBlock() {
         // !!! not tested
+        if(stack.isEmpty()) return 0;
         Lexeme[] lexemes = stack.peek();
         if (lexemes[0].getName().equals(TS.CONDITIONAL_OPERATOR)) {
             // analogue to END ?

@@ -78,10 +78,6 @@ public class FTAnalyser {
         } catch (UnknownSymbolException e) {
             JOptionPane.showMessageDialog(null, "Lexical exception! " + e.getMessage());
         }
-
-        for (TableElem tableElem : TableElem.getParseTable()) {
-            System.out.println(tableElem);
-        }
     }
 
     private Signs calculateRatio() throws UnknownSymbolException {

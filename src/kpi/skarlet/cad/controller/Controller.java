@@ -5,6 +5,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import kpi.skarlet.cad.forwarding.FTCreator;
 import kpi.skarlet.cad.forwarding.analyser.FTAnalyser;
 import kpi.skarlet.cad.forwarding.analyser.TableElem;
@@ -30,7 +32,6 @@ import java.nio.file.Paths;
 public class Controller {
 
     private LexicalAnalyser lexer;
-    private ObservableList<TranslatorException> errors;
     private boolean lexerPass;
     private boolean synzerPass;
     private FTCreator creator;
@@ -152,9 +153,6 @@ public class Controller {
     private TableColumn<PolizTableElem, String> pctPoliz;
 
     @FXML
-    private TextArea rtInputArea;
-
-    @FXML
     private TextArea rtOutputArea;
 
     @FXML
@@ -163,6 +161,21 @@ public class Controller {
     @FXML
     private TextArea rtbOutputArea;
 
+    private Thread[] threads;
+
+    public boolean enterPressed = false;
+
+    public String input;
+
+    class Perf extends Thread {
+        @Override
+        public void run() {
+            System.out.println("Performer run...");
+            codePerformer.perform(Controller.this, analyser.getBuilder());
+            System.out.println("Performer stop");
+        }
+    }
+
     @FXML
     void initialize() {
         initFields();
@@ -170,6 +183,20 @@ public class Controller {
         initParseTable();
         initParsedTable();
         initPolizTable();
+        threads = new Thread[2];
+        threads[0] = Thread.currentThread();
+        initInputHandler();
+    }
+
+    private void initInputHandler() {
+        this.rtbInputArea.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+                input = rtbInputArea.getText();
+                rtbInputArea.clear();
+                rtbInputArea.setPromptText("input");
+                enterPressed = true;
+            }
+        });
     }
 
     private void initFields() {
@@ -279,6 +306,7 @@ public class Controller {
     }
 
     public void onBuildLexer() {
+        this.synzerPass = false;
         clearTables();
         lexer.clear();
         lexer.run(textArea.getText());
@@ -293,8 +321,9 @@ public class Controller {
             this.Labels.setItems(lbls);
             lexerPass = true;
             analyser.countLabels();
+            codePerformer.firstStart = true;
         } else {
-            this.errors = FXCollections.observableArrayList(lexer.getExceptions());
+            ObservableList<TranslatorException> errors = FXCollections.observableArrayList(lexer.getExceptions());
             this.Errors.setItems(errors);
             lexerPass = false;
         }
@@ -307,7 +336,6 @@ public class Controller {
             analyser.analyse();
             onParseTableShowClick();
             fillParsedTable();
-            codePerformer.perform(this, analyser.getBuilder());
             synzerPass = true;
         } else {
             synzerPass = false;
@@ -317,18 +345,24 @@ public class Controller {
 
     public void onBuildPolizCalculate() {
         if (synzerPass) {
-            PolizCalculator polizCalculator = new PolizCalculator(analyser.getPoliz());
-            polizCalculator.calculate();
-            ObservableList<PolizTableElem> parseTable = FXCollections.observableArrayList(polizCalculator.getTable());
-            this.polizCalculation.setItems(parseTable);
+            JOptionPane.showMessageDialog(null, "Now this feature embedded in the syntax analyser");
+//            PolizCalculator polizCalculator = new PolizCalculator(analyser.getPoliz());
+//            polizCalculator.calculate();
+//            ObservableList<PolizTableElem> parseTable = FXCollections.observableArrayList(polizCalculator.getTable());
+//            this.polizCalculation.setItems(parseTable);
         } else {
             JOptionPane.showMessageDialog(null, "Please run syntax analyser before calculating POLIZ");
         }
     }
 
     public void onBuildExecute() {
-        // empty body now
-        JOptionPane.showMessageDialog(null, "here will be result of program");
+        this.clearOutput();
+        if (synzerPass) {
+            threads[1] = new Perf();
+            threads[1].start();
+        } else {
+            JOptionPane.showMessageDialog(null, "Please, complete full analyse before");
+        }
     }
 
     private void clearTables() {
@@ -357,6 +391,15 @@ public class Controller {
         builder.append(string);
         rtOutputArea.setText(builder.toString());
         rtbOutputArea.setText(builder.toString());
+    }
+
+    private void clearOutput() {
+        rtOutputArea.setText("");
+        rtbOutputArea.setText("");
+    }
+
+    public void setInputPrompt(String string) {
+        rtbInputArea.setPromptText(string);
     }
 
 }

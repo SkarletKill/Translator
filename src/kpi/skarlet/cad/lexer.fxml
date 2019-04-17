@@ -190,16 +190,6 @@
                            <content>
                               <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
                                 <tabs>
-                                  <Tab text="Input">
-                                       <content>
-                                          <TextArea fx:id="rtInputArea" prefHeight="200.0" prefWidth="200.0" />
-                                       </content>
-                                  </Tab>
-                                  <Tab text="Output">
-                                       <content>
-                                          <TextArea fx:id="rtOutputArea" editable="false" prefHeight="200.0" prefWidth="200.0" />
-                                       </content>
-                                  </Tab>
                                     <Tab text="BIOS">
                                        <content>
                                           <VBox prefHeight="200.0" prefWidth="100.0">
@@ -213,6 +203,11 @@
                                              </children>
                                           </VBox>
                                        </content>
+                                    </Tab>
+                                    <Tab text="Output">
+                                        <content>
+                                            <TextArea fx:id="rtOutputArea" editable="false" prefHeight="200.0" prefWidth="200.0" />
+                                        </content>
                                     </Tab>
                                 </tabs>
                               </TabPane>

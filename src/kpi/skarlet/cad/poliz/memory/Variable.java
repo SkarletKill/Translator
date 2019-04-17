@@ -35,5 +35,6 @@ public class Variable {
 
     public void setValue(float value) {
         this.value = value;
+        if(this.type.equals(VariableType.INT)) this.value = (float) this.value.intValue();
     }
 }

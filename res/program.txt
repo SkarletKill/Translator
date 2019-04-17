@@ -6,7 +6,7 @@ int input, res, i!
         cout << i;
         cin >> i;
     };
-    if (input > 0) goto exit: end;
+    if (input < 0) goto exit: end;
     cout << input;
     res = -2.-3.-7;
     cout << res;
